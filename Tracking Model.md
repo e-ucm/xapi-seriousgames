@@ -55,9 +55,9 @@ A **completable** is something the player can start, progress and complete in a 
 
 ```
 {
-	type: string // Type of the completable
-	id: string, // An unique identifier for the completable
-	repeatable: boolean, // whether it can be completed more than once
+	type: String, // Type of the completable
+	id: String, // An unique identifier for the completable
+	repeatable: Boolean, // whether it can be completed more than once
 }
 
 ```
@@ -137,8 +137,8 @@ An **accessible** is a virtual space inside the game world the player can access
 
 ```
 {
-	type: string // Type of accessible
-	id: string // An unique identifier for the accessible
+	type: String, // Type of accessible
+	id: String // An unique identifier for the accessible
 }
 ```
 
@@ -172,7 +172,7 @@ The player skips an accessible deliberately.
 
 ### 2.3. Requirements and considerations
 
-* A _skipped_ action MUST be preceded by a _accessed_ action of the some accessible.
+* A _skipped_ action MUST be preceded by a _accessed_ action of the same accessible.
 
 ### 2.4. Accessible metrics
 
@@ -190,8 +190,8 @@ A **variable** is a meaningful value inside the game world the player can set, i
 
 ```
 {
-	type: string, // Type of variable,
-	id: string, // An unique identifier for the accessible,
+	type: String, // Type of variable,
+	id: String, // An unique identifier for the accessible,
 	class: "string" | "number" | "boolean", // Value class
 	max: number, // (Optional) The maximum value this variable should take
 	min: number // The minimum value this variable should take
@@ -206,7 +206,7 @@ A **variable** is a meaningful value inside the game world the player can set, i
 | _Currency_ | E.g., coins |
 | _Health_ | |
 | _Attempts_ | E.g., remaining lives|
-| _Preference_ | e.g., music off |
+| _Preference_ | E.g., music off |
 | _Position_ | x, y, z the position in the map |
 | _Variable_ | A variable with no special semantics |
 
@@ -248,12 +248,12 @@ An **alternative** is a decision the player faces in the game, where she has to 
 
 ```
 {
-	type: string, // Alternative type
-	id: string // An unique identifier for the alternative
+	type: String, // Alternative type
+	id: String, // An unique identifier for the alternative
 	options: [ // A list with the possible options
 	{ 
-		id: string, // an unique identifier for the option
-		locked: boolean // whether the option is initially available
+		id: String, // an unique identifier for the option
+		locked: Boolean // whether the option is initially available
 	},
 	...
 	]
@@ -267,7 +267,7 @@ An **alternative** is a decision the player faces in the game, where she has to 
 | _Menu_ | An options menu |
 | _Dialog_ | |
 | _Path_ | |
-| _Arena_ | e.g., the race in course in a race game, the stadium in a football game, a mini-game in Mario Party |
+| _Arena_ | E.g., the race in course in a race game, the stadium in a football game, a mini-game in Mario Party |
 | _Alternative_ | An alternative with no special semantics |
 
 ### 4.2. Actions
@@ -304,7 +304,7 @@ A **device** is a piece of hardware the player interacts with to control the out
 
 ```
 {
-	type: string // Device type
+	type: String // Device type
 }
 ```
 
@@ -511,7 +511,7 @@ Used by the game engine to log some performance measure.
 
 ```
 {
-	type: String // Type of the performance measure
+	type: String, // Type of the performance measure
 	id: String // (Optional) an identifier for the concrete measure
 }
 ```
@@ -545,7 +545,7 @@ Used by the game engine to log some error in the game.
 ### 10.1. Model
 
 {
-	type: String // Type of the error
+	type: String, // Type of the error
 	id: String // An unique identifier for the error
 }
 
