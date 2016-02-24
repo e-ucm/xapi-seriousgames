@@ -25,11 +25,11 @@ Thus, a gameplay is a timestamp ordered sequence of interactions:
 Tangible | Action | Value | Value mandatory | Value Type | Value constraints |
 ---------|--------|-------|----------|------|------------|
 **Completable**| _started_ | No
- | _progressed_ | Progress | Yes | Float | between `[0, 1]`
+ | _progressed to_ | Progress | Yes | Float | between `[0, 1]`
  | _completed_ | Ending Id. | No. Default: `0` | Integer | Good endings `> 0`; Bad endings `< 0`|
 **Accessible**| _accessed_ | No
  | _skipped_ | No
-**Variable** | _set_ | value | Yes | Boolean, Number |
+**Variable** | _set_ | value | Yes | Boolean, Number, String |
  | _increased_ | value | Yes | Number |
  | _decreased_ | value | Yes | Number |
 **Alternative** | _selected_ | Option Id. | Yes | String |
@@ -85,14 +85,14 @@ The player starts the completion of a completable.
 	John Doe started "Levels/World 1-1" at "15:03:87 May 24, 2016"
 ```
 
-#### 1.2.2. progressed _progress_
+#### 1.2.2. progressed to _progress_
 
 The player makes progress in a completable.
 
 * `value` is a mandatory float indicating the overall progress in the completion, and its value should be between `[0, 1] `.
 
 ```
-	John Doe progressed 0.5 "Levels/World 1-1" at "15:05:69 May 24, 2016"
+	John Doe progressed to 0.5 "Levels/World 1-1" at "15:05:69 May 24, 2016"
 ```
 
 #### 1.2.3. completed _ending_
@@ -113,8 +113,8 @@ The player finished a completable.
 
 * A _completed_ action MUST be preceded by a _started_ action of the same completable.
 * A _completed_ action MUST be emitted before emitting a _started_ action of an already _started_ completable.
-* A _progressed_ action with value `0` is not equivalent to a _started_ action.
-* A _progressed_ action with value `1` is not equivalent to a _completed_ action.
+* A _progressed to_ action with value `0` is not equivalent to a _started_ action.
+* A _progressed to_ action with value `1` is not equivalent to a _completed_ action.
 
 ### 1.4. Completable metrics
 
@@ -544,11 +544,12 @@ Used by the game engine to log some error in the game.
 
 ### 10.1. Model
 
+```
 {
 	type: String, // Type of the error
 	id: String // An unique identifier for the error
 }
-
+```
 #### 10.1.1. Predefined types
 
 |Identifier|Definition|
