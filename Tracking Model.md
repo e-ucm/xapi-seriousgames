@@ -92,11 +92,11 @@
 
 # 1. Interactions Model
 
-A serious game is defined by a finite set of **game objects**. A game object represents a semantic piece of the game on which players can perform one or several types of interactions. A player can, among others:
+A serious game is defined by a finite set of **game objects**. A game object represents an element of the game on which players can perform one or several types of interactions. Some examples of player's interactions are:
 
-* start or complete (interactions) a level (game object)
-* increase or decrease (interactions) the number of coins (game object)
-* select or unlock (interactions) a power-up (game object)
+* start or complete (interaction) a level (game object)
+* increase or decrease (interaction) the number of coins (game object)
+* select or unlock (interaction) a power-up (game object)
 
 A **gameplay** is the flow of interactions that a player performs over these game objects in a sequential order.
 
@@ -125,13 +125,13 @@ Using [JsonSchema](http://json-schema.org/), a single interaction has the follow
 		},
 		"timestamp": {
 			"type": "string",
-			"description": "The time at which the interaction occurred, formatted according to ISO 8601"
+			"description": "Date and time at which the interaction occurred, formatted according to ISO 8601 including its time zone."
 		}
 	}
 }
 ```
 
-The rest of the document defines the set of game objects and interactions considered by the RAGE Serious Game Interactions Model.
+The rest of the document defines the set of game objects and interactions considered by the RAGE Serious Games Interactions Model.
 
 # 2. Completable
 
@@ -158,7 +158,7 @@ A **completable** is something a player can start, progress and complete in a ga
 The player starts the completable.
 
 ```
-	John Doe started "Levels/World 1-1" at "15:03:87 May 24, 2016"
+	John Doe started "Levels/World 1-1" at "May 24, 2016 15:03:17 UTC"
 ```
 
 ### 2.2.2. progressed _progress_
@@ -168,7 +168,7 @@ The player makes progress in a completable.
 * `value` is a mandatory float indicating the absolute progress in the completion. Its value should be between `[0, 1] `.
 
 ```
-	John Doe progressed 0.5 in "Levels/World 1-1" at "15:05:69 May 24, 2016"
+	John Doe progressed 0.5 in "Levels/World 1-1" at "May 24, 2016 15:05:45 UTC"
 ```
 
 ### 2.2.3. completed _ending_
@@ -179,10 +179,10 @@ The player finished a completable.
 
 ```
 	// John Doe completed the game accessing to a good ending
-	John Doe completed with "Princess Rescued" in "Super Mario Bros." at "12:35:13 Jan 20, 2016"
+	John Doe completed with "Princess Rescued" in "Super Mario Bros." at "Jan 20, 2016 12:35:13 UTC"
 
 	// John Doe game overed in the game
-	John Doe completed with "Game Over" in "Super Mario Bros." at "12:35:13 Jan 20, 2016"
+	John Doe completed with "Game Over" in "Super Mario Bros." at "Jan 20, 2016 12:35:13 UTC"
 ```
 
 ## 2.3. Requirements and considerations
@@ -221,7 +221,7 @@ A **reachable** is a virtual space inside the game world a player can access or 
 The player enters in the reachable.
 
 ``
-	John Doe accessed "Screens/Sound Menu" at "7:47:47 Jan 10, 2016"
+	John Doe accessed "Screens/Sound Menu" at "Jan 10, 2016 7:47:47 UTC"
 ``
 
 ### 3.2.2 skipped
@@ -229,7 +229,7 @@ The player enters in the reachable.
 The player skips a reachable deliberately.
 
 ``
-	John Doe skipped "Cutscenes/Intro video" at "9:17:37 Sep 3, 2016"
+	John Doe skipped "Cutscenes/Intro video" at "Sep 3, 2016 9:17:37 UTC"
 ``
 
 ## 3.3. Requirements and considerations
@@ -270,7 +270,7 @@ The player sets a value in a variable.
 
 ```
 	// John Doe turned off music
-	John Doe set false "Preferences/Music" at "11:22:57 May 7, 2016"
+	John Doe set false "Preferences/Music" at "May 7, 2016 11:22:57 UTC"
 ```
 
 ### 4.2.2. increased/decreased _value_
@@ -281,9 +281,9 @@ The player increases/decreases a value in a variable.
 
 ```
 	// John Doe took 2 coins
-	John Doe increased 2 "Currencies/Coins" at "11:22:57 May 7, 2016"
+	John Doe increased 2 "Currencies/Coins" at "May 7, 2016 11:22:57 UTC"
 	// John Doe lost a life
-	John Doe decreased 1 "Attempts/Lives" at "11:24:67 May 7, 2016"
+	John Doe decreased 1 "Attempts/Lives" at "May 7, 2016 11:24:17 UTC"
 ```
 
 ## 4.3. Requirements and considerations
@@ -314,7 +314,7 @@ The player selected an option in an alternative.
 * `value` is the identifier of the selected option.
 
 ```
-	John Doe selected "Tutorial Mode" "Menu/Start" at "13:05:12 Dec 31, 2016"	
+	John Doe selected "Tutorial Mode" "Menu/Start" at "Dec 31, 2016 13:05:12 UTC"	
 ```
 
 ### 5.2.2. unlocked
@@ -324,7 +324,7 @@ The player unlocked an unavailable option in an alternative.
 * `value` is the identifier of the unlocked option.
 
 ```
-	John Doe unlocked "Combat Mode" "Menues/Start" at "14:13:12 Sep 13, 2016"
+	John Doe unlocked "Combat Mode" "Menues/Start" at "Sep 13, 2016 14:13:12 UTC"
 ```
 
 ## 5.3. Requirements and considerations
@@ -354,8 +354,8 @@ The player pressed a button, a key or a position in a device.
 * `value` is the value of the button, key or position pressed by the player. If the value is a position, it should be in the game coordinates system, not in the screen coordinates system.
 
 ```
-	John Doe pressed (50, 247) "Mouse Button 1"  at "19:43:82 Jan 21, 2016"
-	John Doe pressed "Button_X" "Controller"  at "19:43:82 Jan 21, 2016"
+	John Doe pressed (50, 247) "Mouse Button 1"  at "Jan 21, 2016 19:43:22 UTC"
+	John Doe pressed "Button_X" "Controller"  at "Jan 21, 2016 19:43:42 UTC"
 ```
 
 ### 6.2.2. released _button/key/position_
@@ -365,8 +365,8 @@ The player released a button, a key or a position in a device.
 * `value` of the button, key or position released by the player. If the value is a position, it should be in the game coordinates system, not in the screen coordinates system.
 
 ```
-	John Doe released (59, 267) "Mouse Button 1" at "19:43:82 Jan 21, 2016"
-	John Doe released "Button_X" "Controller" at "19:43:82 Jan 21, 2016"
+	John Doe released (59, 267) "Mouse Button 1" at "Jan 21, 2016 19:43:13 UTC"
+	John Doe released "Button_X" "Controller" at "Jan 21, 2016 19:43:43 UTC"
 ```
 
 ## 6.3. Requirements and considerations
@@ -399,14 +399,14 @@ The player touched (or clicked) a target inside the game world (e.g., an UI cont
 * `value` is the optional position of the player touch/click. It should be in the game coordinates system.
 
 ```
-	John Doe touched "UI/StartButton" at "19:43:82 May 15, 2016"
+	John Doe touched "UI/StartButton" at "May 15, 2016 19:43:31 UTC"
 ```
 ### 7.2.2. interacted 
 
 The player interacted with a target inside the game world.
 
 ```
-	John Doe interacted "NPC/Villager" at "19:43:82 May 1, 2016"
+	John Doe interacted "NPC/Villager" at "May 1, 2016 19:43:48 UTC"
 ```
 
 ### 7.2.3. killed
@@ -414,7 +414,7 @@ The player interacted with a target inside the game world.
 The player eliminated a target inside the game world.
 
 ```
-	John Doe killed "Enemy/Goomba" at "19:43:82 May 24, 2016"
+	John Doe killed "Enemy/Goomba" at "May 24, 2016 19:43:29 UTC"
 ```
 
 ### 7.2.4. died because
@@ -422,7 +422,7 @@ The player eliminated a target inside the game world.
 The player lost a life/attempt.
 
 ```
-	John Doe died because "Enemy/Goomba" at "19:43:82 May 24, 2016"
+	John Doe died because "Enemy/Goomba" at "May 24, 2016 19:43:18 UTC"
 ```
 
 ### 7.2.5. collected
@@ -430,7 +430,7 @@ The player lost a life/attempt.
 The player collected a target inside the game world.
 
 ```
-	John Doe collected "Weapon/LightSword" at "19:43:82 May 24, 2016"
+	John Doe collected "Weapon/LightSword" at "May 24, 2016 19:43:51 UTC"
 ```
 
 ### 7.2.6. used
@@ -438,7 +438,7 @@ The player collected a target inside the game world.
 The player used a a target inside the game world.
 
 ```
-	John Doe used "Item/HealthPotion" at "19:43:82 May 24, 2016"
+	John Doe used "Item/HealthPotion" at "May 24, 2016 19:43:31 UTC"
 ```
 
 ## 7.3. Requirements and considerations
@@ -490,12 +490,12 @@ Marks the end of tye complex interaction.
 Example:
 ```
 	// John Doe bought a health potion and recovered health
-	John Doe began "Buy health potion" at "19:43:82 May 24, 2016"
-	John Doe decreased 20 "Currency/Coins" at "19:43:82 May 24, 2016"
-	John Doe collected "Items/Health Potion" at "19:43:82 May 24, 2016"
-	John Doe used "Items/Health Potion" at "19:43:82 May 24, 2016"
-	John Doe increased 5 "Health/HP" at "19:43:82 May 24, 2016"
-	John Doe ended "Buy health potion" at "19:43:82 May 24, 2016"
+	John Doe began "Buy health potion" at "May 24, 2016 19:43:11 UTC"
+	John Doe decreased 20 "Currency/Coins" at "May 24, 2016 19:43:11 UTC"
+	John Doe collected "Items/Health Potion" at "May 24, 2016 19:43:11 UTC"
+	John Doe used "Items/Health Potion" at "May 24, 2016 19:43:11 UTC"
+	John Doe increased 5 "Health/HP" at "May 24, 2016 19:43:11 UTC"
+	John Doe ended "Buy health potion" at "May 24, 2016 19:43:11 UTC"
 ```
 
 * All the interactions are emitted at the same exact timestamp
@@ -523,7 +523,7 @@ Used by the game engine to log debug and performance data.
 The game engine measured a value for a given performance metric.
 
 ```
-	John Doe measured "LoadTime/Scene1" 0.2 at "19:43:82 May 24, 2016"
+	John Doe measured "LoadTime/Scene1" 0.2 at "May 24, 2016 19:43:37 UTC"
 ```
 
 ## 10.3. Requirements and considerations
@@ -682,7 +682,7 @@ Measure label | https://rage.e-ucm.es/xapi/ext/label | String |
 **started**
 
 ```
-	John Doe started "Levels/World 1-1" at "15:03:87 May 24, 2016"
+	John Doe started "Levels/World 1-1" at "May 24, 2016 15:03:47 UTC"
 ```
 
 ```json
@@ -697,14 +697,14 @@ Measure label | https://rage.e-ucm.es/xapi/ext/label | String |
 			"type": "http://curatr3.com/define/type/level"
 		}
 	},
-	"timestamp": "2016-05-24T15:03:87Z"	
+	"timestamp": "2016-05-24T15:03:47Z"	
 }
 ```
 
 **progressed**
 
 ```
-	John Doe progressed 0.5 in "Levels/World 1-1" at "15:05:69 May 24, 2016"
+	John Doe progressed 0.5 in "Levels/World 1-1" at "May 24, 2016 15:05:49 UTC"
 ```
 
 ```json
@@ -724,14 +724,14 @@ Measure label | https://rage.e-ucm.es/xapi/ext/label | String |
 			"https://rage.e-ucm.es/xapi/ext/progress": 0.5
 		}
 	},
-	"timestamp": "2016-05-24T15:05:69Z"	
+	"timestamp": "2016-05-24T15:05:49Z"	
 }
 ```
 
 **completed**
 
 ```
-John Doe completed with "Game Over" in "Super Mario Bros." at "12:35:13 Jan 20, 2016"
+John Doe completed with "Game Over" in "Super Mario Bros." at "Jan 20, 2016 12:35:13 UTC"
 ```
 
 ```json
@@ -751,7 +751,7 @@ John Doe completed with "Game Over" in "Super Mario Bros." at "12:35:13 Jan 20, 
 			"https://rage.e-ucm.es/xapi/ext/value": "Game Over"
 		}
 	},
-	"timestamp": "2016-01-20T15:05:69Z"
+	"timestamp": "2016-01-20T12:35:13Z"
 }
 ```
 
@@ -760,7 +760,7 @@ John Doe completed with "Game Over" in "Super Mario Bros." at "12:35:13 Jan 20, 
 **accessed**
 
 ``
-	John Doe accessed "Screens/Sound Menu" at "7:47:47 Jan 10, 2016"
+	John Doe accessed "Screens/Sound Menu" at "Jan 10, 2016 7:47:47 UTC"
 ``
 
 ```json
@@ -782,7 +782,7 @@ John Doe completed with "Game Over" in "Super Mario Bros." at "12:35:13 Jan 20, 
 **skipped**
 
 ``
-	John Doe skipped "Cutscenes/Intro video" at "9:17:37 Sep 3, 2016"
+	John Doe skipped "Cutscenes/Intro video" at "Sep 3, 2016 9:17:37 UTC"
 ``
 
 ```json
@@ -806,7 +806,7 @@ John Doe completed with "Game Over" in "Super Mario Bros." at "12:35:13 Jan 20, 
 **set**
 
 ```
-	John Doe set false "Preferences/Music" at "11:22:57 May 7, 2016"
+	John Doe set false "Preferences/Music" at "May 7, 2016 11:22:57 UTC"
 ```
 
 ```json
@@ -826,14 +826,14 @@ John Doe completed with "Game Over" in "Super Mario Bros." at "12:35:13 Jan 20, 
 			"https://rage.e-ucm.es/xapi/ext/value": false
 		}
 	},
-	"timestamp": "2016-01-20T15:05:69Z"
+	"timestamp": "2016-05-07T11:22:57Z"
 }
 ```
 
 **decreased**
 
 ```
-	John Doe decreased 1 "Attempts/Lives" at "11:24:67 May 7, 2016"
+	John Doe decreased 1 "Attempts/Lives" at "May 7, 2016 11:24:47 UTC"
 ```
 
 ```json
@@ -853,7 +853,7 @@ John Doe completed with "Game Over" in "Super Mario Bros." at "12:35:13 Jan 20, 
 			"https://rage.e-ucm.es/xapi/ext/value": 1
 		}
 	},
-	"timestamp": "2016-01-20T15:05:69Z"
+	"timestamp": "2016-05-07T11:24:47Z"
 }
 ```
 
@@ -862,7 +862,7 @@ John Doe completed with "Game Over" in "Super Mario Bros." at "12:35:13 Jan 20, 
 **selected**
 
 ```
-	John Doe selected "Tutorial Mode" "Menu/Start" at "13:05:12 Dec 31, 2016"	
+	John Doe selected "Tutorial Mode" "Menu/Start" at "Dec 31, 2016 13:05:12 UTC"	
 ```
 
 ```json
