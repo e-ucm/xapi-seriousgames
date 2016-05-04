@@ -127,7 +127,8 @@ Using [JsonSchema](http://json-schema.org/), a single interaction has the follow
 			"type": "string",
 			"description": "Date and time at which the interaction occurred, formatted according to ISO 8601 including its time zone."
 		}
-	}
+	},
+	"required": ["player", "action", "object", "timestamp"]
 }
 ```
 
