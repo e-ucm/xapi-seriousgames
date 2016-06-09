@@ -1,0 +1,651 @@
+{
+  "@context": "http://xapi.vocab.pub/vocabulary/context.jsonld",
+  "@id": "https://w3id.org/xapi/seriousgames",
+  "@type": "ConceptScheme",
+  "prefLabel": {
+  	"en": "Serious Games Vocabulary"
+  },
+  "created": {
+    "en": "2016-05-09"
+  },
+  "modified": {
+    "en": "2016-05-09"
+  },
+  "wasGeneratedBy": {
+    "name": {
+      "en": "xAPI Vocabulary Working Group"
+    }
+  },
+"activity-types": [ 
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/alternative",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A generic alternative with several options that can be selected or unlocked."
+      },
+      "prefLabel": {
+        "en": "alternative"
+      },
+      "scopeNote": {
+        "en": "This is the generic representation for the alternatives presented to the player during a gameplay. When possible, use a more concrete activity (e.g., question, menu)."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/105798949-n"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/area",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "An identified area inside the game world."
+      },
+      "prefLabel": {
+        "en": "area"
+      },
+      "scopeNote": {
+        "en": "In some games they can also be worlds. Represents an aggregation of zones."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/102738693-n"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/completeable",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "An object or activity that can be started and completed."
+      },
+      "prefLabel": {
+        "en": "completeable"
+      },
+      "scopeNote": {
+        "en": "This is the generic representation for something that can be accomplished in a serious game, and it is not contemplated as any other activity."
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/controller",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A game controller whose input affects the action in an activity."
+      },
+      "prefLabel": {
+        "en": "controller"
+      },
+      "scopeNote": {
+        "en": "Game controllers are common in non-pc games. This activity represents this device."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/103101611-n"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/cutscene",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A non-interactive scene that can be skipped."
+      },
+      "prefLabel": {
+        "en": "cutscene"
+      },
+      "scopeNote": {
+        "en": "A cutscene is a non-interactive scene within the game (e.g., a video, a conversation, an automated sequence). The player can usually skip them pressing some button."
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/device",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A generic interactive device whose input affects the action in an activity."
+      },
+      "prefLabel": {
+        "en": "device"
+      },
+      "scopeNote": {
+        "en": "Players interact with devices to control the outcomes in the serious game. When possible, use a more concrete activity (mouse, keyboard, controller)."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/103187746-n"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/dialog-tree",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "An alternative presented during a conversation with an non-playable character."
+      },
+      "prefLabel": {
+        "en": "dialog-tree"
+      },
+      "scopeNote": {
+        "en": "Dialog trees are a common mechanic in video games, where players can answer questions to NPC. This activity represents that type of alternative."
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/enemy",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A game object that poses a threat inside the game world."
+      },
+      "prefLabel": {
+        "en": "enemy"
+      },
+      "scopeNote": {
+        "en": "Enemies are common elements in video games. Defeating them indicates a player accomplishment."
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/game-object",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A generic game object inside a game world that can react to interactions."
+      },
+      "prefLabel": {
+        "en": "game-object"
+      },
+      "scopeNote": {
+        "en": "This is the generic representation of game object the player can encounter inside the virtual world presented by the game. When possible, use a more concrete activity (e.g., NPC, enemy, item)."
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/health",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A variable indicating remaining health, stamina or attempts within a game."
+      },
+      "prefLabel": {
+        "en": "health"
+      },
+      "scopeNote": {
+        "en": "Used to represent the remaining health of the player (e.g., number of hearts, energy bar)."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/114471374-n"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/item",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A collectable game object whose use or interaction results in an effect in a game."
+      },
+      "prefLabel": {
+        "en": "item"
+      },
+      "scopeNote": {
+        "en": "Items are common elements in video games. Players can collect/use/combine them."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/103593583-n"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/keyboard",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A keyboard whose keystrokes affects the action in an activity."
+      },
+      "prefLabel": {
+        "en": "keyboard"
+      },
+      "scopeNote": {
+        "en": "Somes games can receive inputs from keyboards: physical keyboards in a PC, or virtual keyboards in a smartphone screen. This activity represent both."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/103619216-n"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/level",
+      "@type": "ActivityType",
+      "closeMatch": {
+        "@id": "http://curatr3.com/define/type/level"
+      },
+      "definition": {
+        "en": "A level of a game or of a gamified learning platform."
+      },
+      "prefLabel": {
+        "en": "level"
+      },
+      "scopeNote": {
+        "en": "A level is logic partition of progression in any video game. Completing a level means advancing in the progression of the game."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/113962925-n"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/menu",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A menu with several buttons/options whose selection produces different effects."
+      },
+      "prefLabel": {
+        "en": "menu"
+      },
+      "scopeNote": {
+        "en": "Represents a menu, integrated in the user interface (UI), with several a options."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/106505383-n"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/mouse",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A mouse device whose clicks and movement affects the action in an activity."
+      },
+      "prefLabel": {
+        "en": "mouse"
+      },
+      "scopeNote": {
+        "en": "PC games are usually controlled by mouse interaction. This activity represents this device."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/103799022-n"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/non-player-character",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A character that can offer a conversation or other type of interaction inside a game."
+      },
+      "prefLabel": {
+        "en": "non-player-character"
+      },
+      "scopeNote": {
+        "en": "Players usually have conversations with non-player characters."
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/position",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A variable indicating the position of the player."
+      },
+      "prefLabel": {
+        "en": "position"
+      },
+      "scopeNote": {
+        "en": "Used to represent the current position of the player inside the game world. This position should be expressed in a coordinate system known by the data analysts."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/108639173-n"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/preference",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A variable indicating a specific user choice or setting within an activity."
+      },
+      "prefLabel": {
+        "en": "preference"
+      },
+      "scopeNote": {
+        "en": "Used to represent preferences of the player inside the game (e.g., screen resolution, full screen, music, language)."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/105799460-n"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/quest",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A accomplishable challenge or mission presented inside a game."
+      },
+      "prefLabel": {
+        "en": "quest"
+      },
+      "scopeNote": {
+        "en": "Completing quests marks the players' progress."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/202006623-v"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/reachable",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "An identified generic space accessible inside the game virtual world."
+      },
+      "prefLabel": {
+        "en": "reachable"
+      },
+      "scopeNote": {
+        "en": "This is the generic representation for something the player can access inside the serious game. Accessing a reachable not always means to advance in the game. For example, in a RPG, a player can access an area, a world, a store."
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/resource",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A variable indicating a countable and spendable resource within a game."
+      },
+      "prefLabel": {
+        "en": "resource"
+      },
+      "scopeNote": {
+        "en": "Used to represent the amount of resources the player possesses (e.g., coins, wood, diamonds, gas, etc.)."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/113352793-n"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/score",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A variable indicating a significant score within the game."
+      },
+      "prefLabel": {
+        "en": "score"
+      },
+      "scopeNote": {
+        "en": "Used to represent a meaningful score within the game. This could represent the total score of the game as well as the score obtained in different levels."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/113615828-n"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/screen",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A game screen where a concrete game task is developed."
+      },
+      "prefLabel": {
+        "en": "screen"
+      },
+      "scopeNote": {
+        "en": "Games are usually composed by a set of screens the player navigates. A screen has a concrete function within the game. A screen contains a menu, or the gameplay. To define virtual zones inside the game world, it is recommended to use area or zone."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/103089644-n"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/serious-game",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A game designed for a primary purpose other than pure entertainment. For instance, an educational game or a game-like simulation"
+      },
+      "prefLabel": {
+        "en": "serious-game"
+      },
+      "scopeNote": {
+        "en": "A serious game is the root container for the rest of game elements."
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/touchscreen",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A touchscreen the player can press."
+      },
+      "prefLabel": {
+        "en": "touchscreen"
+      },
+      "scopeNote": {
+        "en": ""
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/104466078-n"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/variable",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "A generic variable indicating some meaningful value."
+      },
+      "prefLabel": {
+        "en": "variable"
+      },
+      "scopeNote": {
+        "en": "This is the generic representation for the meaningful variables of a game. When possible, use a more concrete activity (e.g., score, health)."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/105866043-n"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/activity-types/zone",
+      "@type": "ActivityType",
+      "definition": {
+        "en": "An identified zone inside an area of the game world."
+      },
+      "prefLabel": {
+        "en": "zone"
+      },
+      "scopeNote": {
+        "en": "A zone is inside an area, and defines a logic self-contained place."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/108526463-n"
+      }    
+     }     
+ ],
+ "extensions": [    
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/extensions/progress",
+      "@type": "xapi:Extension",
+      "definition": {
+        "en": "A decimal number (3 significant figures with 2 figures following the decimal point) between 0 and 1 (inclusive) to indicate the value of progress in a completable."
+      },
+      "prefLabel": {
+        "en": "progress"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/extensions/value",
+      "@type": "xapi:Extension",
+      "definition": {
+        "en": "A boolean, number, string or object to indicate the value of a variable. Used to indicate values in those verbs that requires a value in its result (e.g., variable's values in set, variable's increases/decreases in increase/decrease, the button pressed in a mouse click)."
+      },
+      "prefLabel": {
+        "en": "value"
+      }
+    } 
+ ],   
+ "verbs": [    
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/verbs/accessed",
+      "@type": "Verb",
+      "closeMatch": {
+        "@id": "http://activitystrea.ms/schema/1.0/access"
+      },
+      "definition": {
+        "en": "Indicates that the actor has gained access to the object."
+      },
+      "prefLabel": {
+        "en": "accessed"
+      },
+      "scopeNote": {
+        "en": "Associated to the virtual places a player visits during a gameplay."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/202011431-v"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/verbs/decreased",
+      "@type": "Verb",
+      "definition": {
+        "en": "Indicates the actor decreased the value for an object or variable."
+      },
+      "prefLabel": {
+        "en": "decreased"
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/200151509-v"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/verbs/increased",
+      "@type": "Verb",
+      "definition": {
+        "en": "Indicates the actor increased the value for an object or variable."
+      },
+      "prefLabel": {
+        "en": "increased"
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/200156409-v"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/verbs/pressed",
+      "@type": "Verb",
+      "closeMatch": {
+        "@id": "http://future-learning.info/xAPI/verb/pressed"
+      },
+      "definition": {
+        "en": "Indicates that the actor made physical contact with the object."
+      },
+      "prefLabel": {
+        "en": "pressed"
+      },
+      "scopeNote": {
+        "en": "Used when the player presses some button in an input device. Press the left button in a mouse, press the X button in a XBox controller, etc. "
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/201449876-v"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/verbs/released",
+      "@type": "Verb",
+      "closeMatch": {
+        "@id": "http://future-learning.info/xAPI/verb/released"
+      },
+      "definition": {
+        "en": "Indicates that the actor released the object from one's grip from or a specific state."
+      },
+      "prefLabel": {
+        "en": "released"
+      },
+      "scopeNote": {
+        "en": "Used when the player releases a previously pressed button."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/201477180-v"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/verbs/set",
+      "@type": "Verb",
+      "definition": {
+        "en": "Indicates the actor set the value for a variable."
+      },
+      "prefLabel": {
+        "en": "set"
+      },
+      "scopeNote": {
+        "en": "Used when some game variable changes its value."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/200299677-v"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/verbs/started",
+      "@type": "Verb",
+      "closeMatch": {
+        "@id": "http://activitystrea.ms/schema/1.0/start"
+      },
+      "definition": {
+        "en": "Indicates that the actor has started the object (usually an activity)."
+      },
+      "prefLabel": {
+        "en": "started"
+      },
+      "scopeNote": {
+        "en": "Always associated to completable activities (e.g., Serious game, level, quest)."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/202606945-v"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/verbs/unlocked",
+      "@type": "Verb",
+      "definition": {
+        "en": "Indicates the actor unlocked an option that was previously unavailable."
+      },
+      "prefLabel": {
+        "en": "unlocked"
+      },
+      "scopeNote": {
+        "en": "Used when the player unlocks an option in an alternative."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/200220389-v"
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/verbs/used",
+      "@type": "Verb",
+      "definition": {
+        "en": "Indicates the actor used a virtual object."
+      },
+      "prefLabel": {
+        "en": "used"
+      },
+      "scopeNote": {
+        "en": "Used when player uses items they find during the gameplay, to obtain different benefits."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/201161188-v"
+      }
+    } 
+ ],   
+ "references": [  
+      {
+      "@id": "http://adlnet.gov/expapi/activities/question",
+      "@type": "ActivityType",
+      "scopeNote": {
+        "en": "Many serious games use the Q&A mechanic to assess players. This activity covers that."
+      }
+     }, 
+    {
+      "@id": "http://adlnet.gov/expapi/verbs/completed",
+      "@type": "Verb",
+      "scopeNote": {
+        "en": "Always associated to completable activities."
+      }
+    },
+    {
+      "@id": "http://adlnet.gov/expapi/verbs/interacted",
+      "@type": "Verb",
+      "scopeNote": {
+        "en": "Used when the player interacts with a game object in the game. Interact can be to speak, use, kill, etc."
+      }
+    },
+    {
+      "@id": "http://adlnet.gov/expapi/verbs/progressed",
+      "@type": "Verb",
+      "scopeNote": {
+        "en": "Always associated to completable activities, and contains as result a progress value."
+      },
+      "inScheme" : "https://w3id.org/xapi/adl"
+    },
+    {
+      "@id": "http://id.tincanapi.com/verb/skipped",
+      "@type": "Verb",
+      "scopeNote": {
+        "en": "Used to indicate the actor skipped forward or backward while watching a video."
+      }
+    },
+    {
+      "@id": "https://w3id.org/xapi/adb/verbs/selected",
+      "@type": "Verb",
+      "scopeNote": {
+        "en": "Used when the player selects an option in an alternative (e.g., a weapon, an arena, a circuit, a world, a quest, an answer in a dialog)."
+      }
+    }
+ ]
+ }
