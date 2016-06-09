@@ -1,6 +1,16 @@
 <?php
 
-$profile = json_decode(file_get_contents('seriousgames.jsonld'), true);
+$json_ld = file_get_contents('seriousgames.jsonld');
+$headers = getallheaders();
+
+
+if (isset($headers['Accept']) && strcmp($headers['Accept'], 'application/ld+json') == 0) {
+    header('Content-Type: application/json+ld');
+    echo $json_ld;
+    exit;
+}
+
+$profile = json_decode($json_ld, true);
 
 $title = $profile['prefLabel']['en'];
 $url = $profile['@id'];
