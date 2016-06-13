@@ -30,142 +30,172 @@ if (strcmp($mimeType, MIME_TYPE_JSON_LD) == 0) {
     exit;
 }
 
-$json_ld = file_get_contents(PROFILE_FILE);
+$generator = new ProfileGenerator(PROFILE_FILE);
+echo $generator->generate();
+
+class ProfileGenerator {
+
+private $profilePath;
+
+public function __construct($profilePath) {
+	$this->profilePath = $profilePath;
+}
+
+private static function sort_by_label($a, $b) {
+	return strcmp($a['prefLabel']['en'], $b['prefLabel']['en']);
+}
+
+private function generateTable($terms, $url, $title, $type, $class) {
+
+$tableHeader=<<<EOT
+<h2 class="page-header">{$title}</h2>
+<div class="panel panel-default table-responsive">
+    <!-- Table Header -->
+    <table class="table table-hover">
+    <thead>
+        <tr class="{$class}">
+            <th>Label</th>
+            <th>Description</th>
+            <th>Scope Note</th>
+            <th>ID (IRI)</th>
+            <th>Relationships</th>
+            <th>Closely Related Term</th>
+            <th>Vocabulary</th>
+        </tr>
+    </thead>
+EOT;
+
+$tableBody = '';
+foreach ($terms as $term) {
+	$id = isset($term['@id']) ? $term['@id'] : '';
+	$prefLabel = isset($term['prefLabel']) ? $term['prefLabel']['en'] : '';
+	$description = isset($term['definition']) ? $term['definition']['en'] : '';
+	$scope_note = isset($term['scopeNote']) ? $term['scopeNote']['en'] : '';
+	$close_match = isset($term['closeMatch']) ? $term['closeMatch']['@id'] : '';
+	$close_match_content = '';
+	if ($close_match) {
+		$close_match_content = "<strong>closeMatch:</strong> <a href=\"{$close_match}\" target=\"_blank\">$close_match</a>";
+	}
+	$related_term = isset($term['closelyRelatedNaturalLanguageTerm']) ? $term['closelyRelatedNaturalLanguageTerm']['@id'] : '';
+	$tr_class = isset($term['reference']) && $term['reference'] ? 'warning' : '';
+	$in_scheme = isset($term['inScheme']) ? $term['inScheme'] : $url;
+
+	$tableBodyRow = <<<EOT
+<tbody typeof="xapi:i{$type}" about="{$id}" id="{$prefLabel}">
+<tr class="{$tr_class}">
+    <td property="skos:prefLabel" lang="en" xml:lang="en" content="{$prefLabel}">{$prefLabel}</td>
+    <td property="skos:definition" lang="en" xml:lang="en" content="{$description}">
+        {$description}
+    </td>
+    <td property="skos:scopeNote" lang="en" xml:lang="en" content="{$scope_note}">
+        {$scope_note}
+    </td>
+    <td><a href="{$id}">{$id}</a>
+    </td>
+    <td rel="skos:closeMatch" resource="{$close_match}">
+        {$close_match_content}
+    </td>
+    <td rel="xapi:closelyRelatedNaturalLanguageTerm" resource="{$related_term}">
+        <a href="{$related_term}" target="_blank">{$related_term}</a>
+    </td>
+    <td rel="skos:inScheme" resource="{$in_scheme}">
+        <a href="{$in_scheme}">{$in_scheme}</a></td>
+</tr>
+</tbody>
+EOT;
+	$tableBody .= $tableBodyRow;
+}
+
+$tableFooter=<<<EOT
+        </table>
+    </div>
+EOT;
+	return $tableHeader.$tableBody.$tableFooter;
+}
+
+private function generateDropdown($terms, $title) {
+
+$dropdownHeader = <<<EOT
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle active" data-toggle="dropdown">{$title}<b class="caret"></b></a>
+    <ul class="dropdown-menu">
+EOT;
+
+$dropdownBody = '';
+foreach ($terms as $term) {
+	$name = $term['prefLabel']['en'];
+	$dropdownBody .= "<li><a href=\"#{$name}\">{$name}</a></li>";
+}
+
+$dropdownFooter = <<<EOT
+    </ul>
+</li>
+EOT;
+	return $dropdownHeader.$dropdownBody.$dropdownFooter;
+}
+
+public function generate() {
+
+$json_ld = file_get_contents($this->profilePath);
 $profile = json_decode($json_ld, true);
 
 $title = $profile['prefLabel']['en'];
-$url = $profile['@id'];
-
-$GLOBALS['url'] = $url;
-
-function sort_by_label($a, $b)
-{
-    return strcmp($a['prefLabel']['en'], $b['prefLabel']['en']);
-}
-
-function echo_table($terms, $title, $type, $class)
-{
-    global $url;
-    ?>
-    <h2 class="page-header"><?= $title ?></h2>
-    <div class="panel panel-default table-responsive">
-        <!-- Table Header -->
-        <table class="table table-hover">
-            <thead>
-            <tr class="<?= $class ?>">
-                <th>Label</th>
-                <th>Description</th>
-                <th>Scope Note</th>
-                <th>ID (IRI)</th>
-                <th>Relationships</th>
-                <th>Closely Related Term</th>
-                <th>Vocabulary</th>
-            </tr>
-            </thead>
-            <?php
-
-            foreach ($terms as $term):
-                $id = isset($term['@id']) ? $term['@id'] : '';
-                $prefLabel = isset($term['prefLabel']) ? $term['prefLabel']['en'] : '';
-                $description = isset($term['definition']) ? $term['definition']['en'] : '';
-                $scope_note = isset($term['scopeNote']) ? $term['scopeNote']['en'] : '';
-                $close_match = isset($term['closeMatch']) ? $term['closeMatch']['@id'] : '';
-                $related_term = isset($term['closelyRelatedNaturalLanguageTerm']) ? $term['closelyRelatedNaturalLanguageTerm']['@id'] : '';
-                $tr_class = isset($term['reference']) && $term['reference'] ? 'warning' : '';
-                $in_scheme = isset($term['inScheme']) ? $term['inScheme'] : $url;
-
-
-                ?>
-                <tbody typeof="xapi:<?= $type ?>" about="<?= $id ?>" id="<?= $prefLabel ?>">
-                <tr class="<?= $tr_class ?>">
-                    <td property="skos:prefLabel" lang="en" xml:lang="en" content="<?= $prefLabel ?>"><?= $prefLabel ?></td>
-                    <td property="skos:definition" lang="en" xml:lang="en" content="<?= $description ?>">
-                        <?= $description ?>
-                    </td>
-                    <td property="skos:scopeNote" lang="en" xml:lang="en" content="<?= $scope_note ?>">
-                        <?= $scope_note ?>
-                    </td>
-                    <td><a href="<?= $id ?>"><?= $id ?></a>
-                    </td>
-                    <td rel="skos:closeMatch" resource="<?= $close_match ?>">
-                        <?php if ($close_match): ?>
-                            <strong>closeMatch:</strong>
-                            <a href="<?= $close_match ?>" target="_blank"><?= $close_match ?></a>
-                        <?php endif; ?>
-                    </td>
-                    <td rel="xapi:closelyRelatedNaturalLanguageTerm" resource="<?= $related_term ?>">
-                        <a href="<?= $related_term ?>" target="_blank"><?= $related_term ?></a>
-                    </td>
-                    <td rel="skos:inScheme" resource="<?= $in_scheme ?>">
-                        <a href="<?= $in_scheme ?>"><?= $in_scheme ?></a></td>
-                </tr>
-                </tbody>
-                <?php
-            endforeach;
-            ?>
-        </table>
-    </div>
-    <?php
-}
-
-function echo_drop_down($terms, $title)
-{
-    ?>
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle active" data-toggle="dropdown"><?= $title ?><b class="caret"></b></a>
-        <ul class="dropdown-menu">
-            <?php foreach ($terms as $term):
-                $name = $term['prefLabel']['en'];
-                ?>
-                <li><a href="#<?= $name ?>"><?= $name ?></a></li>
-            <?php endforeach; ?>
-        </ul>
-    </li>
-    <?php
-}
-
 
 $verbs = $profile['verbs'];
 $activities = $profile['activity-types'];
 $extensions = $profile['extensions'];
 
 $references = $profile['references'];
+$url = $profile['@id'];
 
 foreach ($references as $reference) {
-    if (isset($reference['@type'])) {
-        $prefLabel = substr(strrchr($reference['@id'], '/'), 1);
-        $reference['prefLabel'] = array(
-            'en' => $prefLabel
-        );
-        $reference['reference'] = true;
-
-        switch ($reference['@type']) {
-            case 'Verb':
-                $verbs[] = $reference;
-                break;
-            case 'Extension':
-                $extensions[] = $reference;
-                break;
-            default:
-                $activities[] = $reference;
-                break;
-        }
-    }
+	if (isset($reference['@type'])) {
+		$prefLabel = substr(strrchr($reference['@id'], '/'), 1);
+		$reference['prefLabel'] = array('en' => $prefLabel);
+		$reference['reference'] = true;
+	
+		switch ($reference['@type']) {
+			case 'Verb':
+				$verbs[] = $reference;
+			break;
+			case 'Extension':
+				$extensions[] = $reference;
+			break;
+			default:
+				$activities[] = $reference;
+			break;
+        	}
+	}
 }
 
 $created = $profile['created']['en'];
 $modified = $profile['modified']['en'];
 
-usort($verbs, 'sort_by_label');
-usort($activities, 'sort_by_label');
-usort($extensions, 'sort_by_label');
+usort($verbs, array('ProfileGenerator', 'sort_by_label'));
+usort($activities, array('ProfileGenerator', 'sort_by_label'));
+usort($extensions, array('ProfileGenerator', 'sort_by_label'));
 
-?>
+return $this->generatePage($url, $title, $created, $modified, $verbs, $activities, $extensions);
+}
+
+private function generatePage($url, $title, $created, $modified, $verbs, $activities, $extensions) {
+
+$navbar = '';
+$navbar .= $this->generateDropdown($verbs, 'Verbs');
+$navbar .= $this->generateDropdown($activities, 'Activity Types');
+$navbar .= $this->generateDropdown($extensions, 'Extensions');
+
+$content = '';
+$content .= $this->generateTable($verbs, $url, 'Verbs', 'Verb', 'info');
+$content .= $this->generateTable($activities, $url, 'Activity Types', 'Activity Type', 'danger');
+$content .= $this->generateTable($extensions, $url, 'Extensions', 'Extension', 'success');
+
+$page=<<<EOT
 <!DOCTYPE html>
 <html lang="en" xml:lang="en">
 <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-    <title>Experience API (xAPI) - <?= $title ?></title>
+    <title>Experience API (xAPI) - $title </title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
 </head>
@@ -176,15 +206,9 @@ usort($extensions, 'sort_by_label');
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
                 <span class="icon-bar"></span> <span class="icon-bar"></span></button>
-            <a class="navbar-brand" href="<?= $url ?>"><?= $title ?></a></div>
+            <a class="navbar-brand" href="$url">$title</a></div>
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <?php
-                echo_drop_down($verbs, 'Verbs');
-                echo_drop_down($activities, 'Activity Types');
-                echo_drop_down($extensions, 'Extensions');
-                ?>
-            </ul>
+            <ul class="nav navbar-nav">$navbar</ul>
         </div>
         <!--/.nav-collapse -->
     </div>
@@ -201,9 +225,9 @@ usort($extensions, 'sort_by_label');
     skos: http://www.w3.org/2004/02/skos/core#
     xapi: https://w3id.org/xapi/ontology#
     xsd: http://www.w3.org/2001/XMLSchema#">
-    <div typeof="skos:ConceptScheme" about="<?= $url ?>">
-        <div property="skos:prefLabel" lang="en" xml:lang="en" content="<?= $title ?>">
-            <h2 class="page-header"><?= $title ?></h2>
+    <div typeof="skos:ConceptScheme" about="$url">
+        <div property="skos:prefLabel" lang="en" xml:lang="en" content="$title">
+            <h2 class="page-header">{$title}</h2>
         </div>
         <div property="skos:editorialNote" lang="en" xml:lang="en" content="This vocabulary was designed for the Serious Games xAPI profile as part of the RAGE project.">
             <strong>Note: </strong>This vocabulary was designed for the Serious Games xAPI profile as part of the RAGE
@@ -212,18 +236,13 @@ usort($extensions, 'sort_by_label');
                 here</a>. Terms that were not created by the Serious Games community, but are referenced from other
             vocabularies are higlighted in <span class="bg-warning"> <strong> yellow </strong> </span>.
         </div>
-        <div property="dcterms:created" datatype="xsd:date" content="<?= $created ?>">Date
-            Created: <?= $created; ?></div>
-        <div property="dcterms:modified" datatype="xsd:date" content="<?= $modified ?>">Last
-            Modified: <?= $modified; ?></div>
+        <div property="dcterms:created" datatype="xsd:date" content="$created">Date
+            Created: $created</div>
+        <div property="dcterms:modified" datatype="xsd:date" content="$modified">Last
+            Modified: $modified</div>
     </div>
-    <br/>
-    <?php
-    echo_table($verbs, 'Verbs', 'Verb', 'info');
-    echo_table($activities, 'Activity Types', 'Activity Type', 'danger');
-    echo_table($extensions, 'Extensions', 'Extension', 'success');
-    ?>
-
+    <br /> 
+    $content
 </div> <!-- .container-fluid -->
 <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -236,3 +255,8 @@ usort($extensions, 'sort_by_label');
 
 </body>
 </html>
+EOT;
+return $page;
+}
+
+}
