@@ -3,7 +3,7 @@
   "@id": "https://w3id.org/xapi/seriousgames",
   "@type": "ConceptScheme",
   "prefLabel": {
-  	"en": "Serious Games Vocabulary"
+    "en": "Serious Games Vocabulary"
   },
   "created": {
     "en": "2016-05-09"
@@ -16,23 +16,7 @@
       "en": "xAPI Vocabulary Working Group"
     }
   },
-"activity-types": [ 
-    {
-      "@id": "https://w3id.org/xapi/seriousgames/activity-types/alternative",
-      "@type": "ActivityType",
-      "definition": {
-        "en": "A generic alternative with several options that can be selected or unlocked."
-      },
-      "prefLabel": {
-        "en": "alternative"
-      },
-      "scopeNote": {
-        "en": "This is the generic representation for the alternatives presented to the player during a gameplay. When possible, use a more concrete activity (e.g., question, menu)."
-      },
-      "closelyRelatedNaturalLanguageTerm": {
-        "@id": "http://wordnet-rdf.princeton.edu/wn31/105798949-n"
-      }
-    },
+  "activity-types": [
     {
       "@id": "https://w3id.org/xapi/seriousgames/activity-types/area",
       "@type": "ActivityType",
@@ -47,19 +31,6 @@
       },
       "closelyRelatedNaturalLanguageTerm": {
         "@id": "http://wordnet-rdf.princeton.edu/wn31/102738693-n"
-      }
-    },
-    {
-      "@id": "https://w3id.org/xapi/seriousgames/activity-types/completeable",
-      "@type": "ActivityType",
-      "definition": {
-        "en": "An object or activity that can be started and completed."
-      },
-      "prefLabel": {
-        "en": "completeable"
-      },
-      "scopeNote": {
-        "en": "This is the generic representation for something that can be accomplished in a serious game, and it is not contemplated as any other activity."
       }
     },
     {
@@ -131,35 +102,6 @@
       },
       "scopeNote": {
         "en": "Enemies are common elements in video games. Defeating them indicates a player accomplishment."
-      }
-    },
-    {
-      "@id": "https://w3id.org/xapi/seriousgames/activity-types/game-object",
-      "@type": "ActivityType",
-      "definition": {
-        "en": "A generic game object inside a game world that can react to interactions."
-      },
-      "prefLabel": {
-        "en": "game-object"
-      },
-      "scopeNote": {
-        "en": "This is the generic representation of game object the player can encounter inside the virtual world presented by the game. When possible, use a more concrete activity (e.g., NPC, enemy, item)."
-      }
-    },
-    {
-      "@id": "https://w3id.org/xapi/seriousgames/activity-types/health",
-      "@type": "ActivityType",
-      "definition": {
-        "en": "A variable indicating remaining health, stamina or attempts within a game."
-      },
-      "prefLabel": {
-        "en": "health"
-      },
-      "scopeNote": {
-        "en": "Used to represent the remaining health of the player (e.g., number of hearts, energy bar)."
-      },
-      "closelyRelatedNaturalLanguageTerm": {
-        "@id": "http://wordnet-rdf.princeton.edu/wn31/114471374-n"
       }
     },
     {
@@ -259,22 +201,6 @@
       }
     },
     {
-      "@id": "https://w3id.org/xapi/seriousgames/activity-types/position",
-      "@type": "ActivityType",
-      "definition": {
-        "en": "A variable indicating the position of the player."
-      },
-      "prefLabel": {
-        "en": "position"
-      },
-      "scopeNote": {
-        "en": "Used to represent the current position of the player inside the game world. This position should be expressed in a coordinate system known by the data analysts."
-      },
-      "closelyRelatedNaturalLanguageTerm": {
-        "@id": "http://wordnet-rdf.princeton.edu/wn31/108639173-n"
-      }
-    },
-    {
       "@id": "https://w3id.org/xapi/seriousgames/activity-types/preference",
       "@type": "ActivityType",
       "definition": {
@@ -304,51 +230,6 @@
       },
       "closelyRelatedNaturalLanguageTerm": {
         "@id": "http://wordnet-rdf.princeton.edu/wn31/202006623-v"
-      }
-    },
-    {
-      "@id": "https://w3id.org/xapi/seriousgames/activity-types/reachable",
-      "@type": "ActivityType",
-      "definition": {
-        "en": "An identified generic space accessible inside the game virtual world."
-      },
-      "prefLabel": {
-        "en": "reachable"
-      },
-      "scopeNote": {
-        "en": "This is the generic representation for something the player can access inside the serious game. Accessing a reachable not always means to advance in the game. For example, in a RPG, a player can access an area, a world, a store."
-      }
-    },
-    {
-      "@id": "https://w3id.org/xapi/seriousgames/activity-types/resource",
-      "@type": "ActivityType",
-      "definition": {
-        "en": "A variable indicating a countable and spendable resource within a game."
-      },
-      "prefLabel": {
-        "en": "resource"
-      },
-      "scopeNote": {
-        "en": "Used to represent the amount of resources the player possesses (e.g., coins, wood, diamonds, gas, etc.)."
-      },
-      "closelyRelatedNaturalLanguageTerm": {
-        "@id": "http://wordnet-rdf.princeton.edu/wn31/113352793-n"
-      }
-    },
-    {
-      "@id": "https://w3id.org/xapi/seriousgames/activity-types/score",
-      "@type": "ActivityType",
-      "definition": {
-        "en": "A variable indicating a significant score within the game."
-      },
-      "prefLabel": {
-        "en": "score"
-      },
-      "scopeNote": {
-        "en": "Used to represent a meaningful score within the game. This could represent the total score of the game as well as the score obtained in different levels."
-      },
-      "closelyRelatedNaturalLanguageTerm": {
-        "@id": "http://wordnet-rdf.princeton.edu/wn31/113615828-n"
       }
     },
     {
@@ -397,22 +278,6 @@
       }
     },
     {
-      "@id": "https://w3id.org/xapi/seriousgames/activity-types/variable",
-      "@type": "ActivityType",
-      "definition": {
-        "en": "A generic variable indicating some meaningful value."
-      },
-      "prefLabel": {
-        "en": "variable"
-      },
-      "scopeNote": {
-        "en": "This is the generic representation for the meaningful variables of a game. When possible, use a more concrete activity (e.g., score, health)."
-      },
-      "closelyRelatedNaturalLanguageTerm": {
-        "@id": "http://wordnet-rdf.princeton.edu/wn31/105866043-n"
-      }
-    },
-    {
       "@id": "https://w3id.org/xapi/seriousgames/activity-types/zone",
       "@type": "ActivityType",
       "definition": {
@@ -426,10 +291,10 @@
       },
       "closelyRelatedNaturalLanguageTerm": {
         "@id": "http://wordnet-rdf.princeton.edu/wn31/108526463-n"
-      }    
-     }     
- ],
- "extensions": [    
+      }
+    }
+  ],
+  "extensions": [
     {
       "@id": "https://w3id.org/xapi/seriousgames/extensions/progress",
       "@type": "xapi:Extension",
@@ -438,20 +303,45 @@
       },
       "prefLabel": {
         "en": "progress"
+      },
+      "scopeNote": {
+        "en": "Indicates the progress in a completable. This extensions should appear in the Statement's result."
       }
     },
     {
-      "@id": "https://w3id.org/xapi/seriousgames/extensions/value",
+      "@id": "https://w3id.org/xapi/seriousgames/extensions/health",
       "@type": "xapi:Extension",
       "definition": {
-        "en": "A boolean, number, string or object to indicate the value of a variable. Used to indicate values in those verbs that requires a value in its result (e.g., variable's values in set, variable's increases/decreases in increase/decrease, the button pressed in a mouse click)."
+        "en": "A decimal number (3 significant figures with 2 figures following the decimal point) between 0 and 1 (inclusive) to indicate the remaining health or stamina within a game."
       },
       "prefLabel": {
-        "en": "value"
+        "en": "health"
+      },
+      "scopeNote": {
+        "en": "Used to represent the remaining health of the player (e.g., number of hearts, energy bar)."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/114471374-n"
       }
-    } 
- ],   
- "verbs": [    
+    },
+    {
+      "@id": "https://w3id.org/xapi/seriousgames/extensions/position",
+      "@type": "xapi:Extension",
+      "definition": {
+        "en": "An object with attributes x, y and z indicating the position of the player within a particular area in a game."
+      },
+      "prefLabel": {
+        "en": "position"
+      },
+      "scopeNote": {
+        "en": "Used to represent the current position of the player inside the game world. This position should be expressed in a coordinate system known by the data analysts. This extensions appears in the Statement's result."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://wordnet-rdf.princeton.edu/wn31/108639173-n"
+      }
+    }
+  ],
+  "verbs": [
     {
       "@id": "https://w3id.org/xapi/seriousgames/verbs/accessed",
       "@type": "Verb",
@@ -469,32 +359,6 @@
       },
       "closelyRelatedNaturalLanguageTerm": {
         "@id": "http://wordnet-rdf.princeton.edu/wn31/202011431-v"
-      }
-    },
-    {
-      "@id": "https://w3id.org/xapi/seriousgames/verbs/decreased",
-      "@type": "Verb",
-      "definition": {
-        "en": "Indicates the actor decreased the value for an object or variable."
-      },
-      "prefLabel": {
-        "en": "decreased"
-      },
-      "closelyRelatedNaturalLanguageTerm": {
-        "@id": "http://wordnet-rdf.princeton.edu/wn31/200151509-v"
-      }
-    },
-    {
-      "@id": "https://w3id.org/xapi/seriousgames/verbs/increased",
-      "@type": "Verb",
-      "definition": {
-        "en": "Indicates the actor increased the value for an object or variable."
-      },
-      "prefLabel": {
-        "en": "increased"
-      },
-      "closelyRelatedNaturalLanguageTerm": {
-        "@id": "http://wordnet-rdf.princeton.edu/wn31/200156409-v"
       }
     },
     {
@@ -536,41 +400,6 @@
       }
     },
     {
-      "@id": "https://w3id.org/xapi/seriousgames/verbs/set",
-      "@type": "Verb",
-      "definition": {
-        "en": "Indicates the actor set the value for a variable."
-      },
-      "prefLabel": {
-        "en": "set"
-      },
-      "scopeNote": {
-        "en": "Used when some game variable changes its value."
-      },
-      "closelyRelatedNaturalLanguageTerm": {
-        "@id": "http://wordnet-rdf.princeton.edu/wn31/200299677-v"
-      }
-    },
-    {
-      "@id": "https://w3id.org/xapi/seriousgames/verbs/started",
-      "@type": "Verb",
-      "closeMatch": {
-        "@id": "http://activitystrea.ms/schema/1.0/start"
-      },
-      "definition": {
-        "en": "Indicates that the actor has started the object (usually an activity)."
-      },
-      "prefLabel": {
-        "en": "started"
-      },
-      "scopeNote": {
-        "en": "Always associated to completable activities (e.g., Serious game, level, quest)."
-      },
-      "closelyRelatedNaturalLanguageTerm": {
-        "@id": "http://wordnet-rdf.princeton.edu/wn31/202606945-v"
-      }
-    },
-    {
       "@id": "https://w3id.org/xapi/seriousgames/verbs/unlocked",
       "@type": "Verb",
       "definition": {
@@ -601,16 +430,16 @@
       "closelyRelatedNaturalLanguageTerm": {
         "@id": "http://wordnet-rdf.princeton.edu/wn31/201161188-v"
       }
-    } 
- ],   
- "references": [  
-      {
+    }
+  ],
+  "references": [
+    {
       "@id": "http://adlnet.gov/expapi/activities/question",
       "@type": "ActivityType",
       "scopeNote": {
         "en": "Many serious games use the Q&A mechanic to assess players. This activity covers that."
       }
-     }, 
+    },
     {
       "@id": "http://adlnet.gov/expapi/verbs/completed",
       "@type": "Verb",
@@ -631,7 +460,7 @@
       "scopeNote": {
         "en": "Always associated to completable activities, and contains as result a progress value."
       },
-      "inScheme" : "https://w3id.org/xapi/adl"
+      "inScheme": "https://w3id.org/xapi/adl"
     },
     {
       "@id": "http://id.tincanapi.com/verb/skipped",
@@ -646,6 +475,14 @@
       "scopeNote": {
         "en": "Used when the player selects an option in an alternative (e.g., a weapon, an arena, a circuit, a world, a quest, an answer in a dialog)."
       }
+    },
+    {
+      "@id": "https://w3id.org/xapi/adb/verbs/initialized",
+      "@type": "Verb",
+      "scopeNote": {
+        "en": "Used when the player starts a completable, for instance, a serious game or a level."
+      },
+      "inScheme": "https://w3id.org/xapi/adl"
     }
- ]
- }
+  ]
+}
