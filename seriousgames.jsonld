@@ -438,21 +438,24 @@
       "@type": "ActivityType",
       "scopeNote": {
         "en": "Many serious games use the Q&A mechanic to assess players. This activity covers that."
-      }
+      },
+      "inScheme": "https://w3id.org/xapi/adl"
     },
     {
       "@id": "http://adlnet.gov/expapi/verbs/completed",
       "@type": "Verb",
       "scopeNote": {
         "en": "Always associated to completable activities."
-      }
+      },
+      "inScheme": "https://w3id.org/xapi/adl"
     },
     {
       "@id": "http://adlnet.gov/expapi/verbs/interacted",
       "@type": "Verb",
       "scopeNote": {
         "en": "Used when the player interacts with a game object in the game. Interact can be to speak, use, kill, etc."
-      }
+      },
+      "inScheme": "https://w3id.org/xapi/adl"
     },
     {
       "@id": "http://adlnet.gov/expapi/verbs/progressed",
@@ -467,14 +470,16 @@
       "@type": "Verb",
       "scopeNote": {
         "en": "Used to indicate the actor skipped forward or backward while watching a video."
-      }
+      },
+      "inScheme": "https://registry.tincanapi.com/"
     },
     {
       "@id": "https://w3id.org/xapi/adb/verbs/selected",
       "@type": "Verb",
       "scopeNote": {
         "en": "Used when the player selects an option in an alternative (e.g., a weapon, an arena, a circuit, a world, a quest, an answer in a dialog)."
-      }
+      },
+      "inScheme": "https://w3id.org/xapi/adb/"
     },
     {
       "@id": "https://w3id.org/xapi/adb/verbs/initialized",
