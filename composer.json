@@ -1,0 +1,6 @@
+{
+    "require": {
+        "monolog/monolog": "~1.19",
+        "e-ucm/xapi-profile2Html": "~0.1.0"
+    }
+}
