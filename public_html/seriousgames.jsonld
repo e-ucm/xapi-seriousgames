@@ -63,22 +63,6 @@
       }
     },
     {
-      "@id": "https://w3id.org/xapi/seriousgames/activity-types/device",
-      "@type": "ActivityType",
-      "definition": {
-        "en": "A generic interactive device whose input affects the action in an activity."
-      },
-      "prefLabel": {
-        "en": "device"
-      },
-      "scopeNote": {
-        "en": "Players interact with devices to control the outcomes in the serious game. When possible, use a more concrete activity (mouse, keyboard, controller)."
-      },
-      "closelyRelatedNaturalLanguageTerm": {
-        "@id": "http://wordnet-rdf.princeton.edu/wn31/103187746-n"
-      }
-    },
-    {
       "@id": "https://w3id.org/xapi/seriousgames/activity-types/dialog-tree",
       "@type": "ActivityType",
       "definition": {
@@ -198,22 +182,6 @@
       },
       "scopeNote": {
         "en": "Players usually have conversations with non-player characters."
-      }
-    },
-    {
-      "@id": "https://w3id.org/xapi/seriousgames/activity-types/preference",
-      "@type": "ActivityType",
-      "definition": {
-        "en": "A variable indicating a specific user choice or setting within an activity."
-      },
-      "prefLabel": {
-        "en": "preference"
-      },
-      "scopeNote": {
-        "en": "Used to represent preferences of the player inside the game (e.g., screen resolution, full screen, music, language)."
-      },
-      "closelyRelatedNaturalLanguageTerm": {
-        "@id": "http://wordnet-rdf.princeton.edu/wn31/105799460-n"
       }
     },
     {
