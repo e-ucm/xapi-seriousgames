@@ -273,7 +273,7 @@
         "en": "progress"
       },
       "scopeNote": {
-        "en": "Indicates the progress in a completable. This extensions should appear in the Statement's result."
+        "en": "Indicates the progress in a completable. This extension appears in the Statement's result."
       }
     },
     {
@@ -286,7 +286,7 @@
         "en": "health"
       },
       "scopeNote": {
-        "en": "Used to represent the remaining health of the player (e.g., number of hearts, energy bar)."
+        "en": "Used to represent the remaining health of the player (e.g., number of hearts, energy bar). This extension appears in the Statement's result."
       },
       "closelyRelatedNaturalLanguageTerm": {
         "@id": "http://wordnet-rdf.princeton.edu/wn31/114471374-n"
@@ -302,7 +302,7 @@
         "en": "position"
       },
       "scopeNote": {
-        "en": "Used to represent the current position of the player inside the game world. This position should be expressed in a coordinate system known by the data analysts. This extensions appears in the Statement's result."
+        "en": "Used to represent the current position of the player inside the game world. This position should be expressed in a coordinate system known by the data analysts. This extension appears in the Statement's result."
       },
       "closelyRelatedNaturalLanguageTerm": {
         "@id": "http://wordnet-rdf.princeton.edu/wn31/108639173-n"
