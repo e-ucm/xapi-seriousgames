@@ -34,5 +34,5 @@ if (strcmp($mimeType, MIME_TYPE_JSON_LD) == 0) {
     exit;
 }
 
-$generator = new Profile2Html(PROFILE_FILE);
-echo $generator->generate();
+$generator = new Profile2Html();
+echo $generator->generate(PROFILE_FILE);
