@@ -562,26 +562,26 @@ Used by the game engine to log some error in the game.
 Object | Action | Value | Value mandatory | Value Type | Value constraints |
 ---------|--------|-------|----------|------|------------|
 **Completable**| _started_ | No
- | _progressed to_ | Progress | Yes | Float | between `[0, 1]`
- | _completed_ | Ending Identifier | No | String | - |
+ | | _progressed to_ | Progress | Yes | Float | between `[0, 1]`
+ | | _completed_ | Ending Identifier | No | String | - |
 **Accessible**| _accessed_ | No
- | _skipped_ | No
+ | | _skipped_ | No
 **Variable** | _set_ | value | Yes | Boolean, Number, String |
- | _increased_ | value | Yes | Number |
- | _decreased_ | value | Yes | Number |
+ | | _increased_ | value | Yes | Number |
+ | | _decreased_ | value | Yes | Number |
 **Alternative** | _selected_ | Option Id. | Yes | String |
- | _unlocked_ | Option Id. | Yes | String | 
+ | | _unlocked_ | Option Id. | Yes | String | 
 **Device** | _pressed_ | Press value (button, key, position) | Yes | Integer, Position | Position must be in world coordinates |
- | _released_ | Press value (button, key, position) | Yes | String, Position | Position must be in world coordinates |
+ | | _released_ | Press value (button, key, position) | Yes | String, Position | Position must be in world coordinates |
 **Target** | _touched_ (clicked) | Touch position | No | Position | Position must be in world coordinates |
- | _interacted_ | No
- | _killed_ | No
- | _died because_ | No
- | _collected_ | No
- | _used_ | No
+ | | _interacted_ | No
+ | | _killed_ | No
+ | | _died because_ | No
+ | | _collected_ | No
+ | | _used_ | No
 **Event** | _performed_ | Custom value
 **Compound interaction**| _began_ | Compound interaction Id. | Yes | String 
- | _ended_ | No
+ | | _ended_ | No
 **Measure**| _measured_ | Measure value | Yes | String
 **Game Message**| _threw_ | Error message | No | String
 
