@@ -9,8 +9,8 @@
   - [2.1. Predefined types](#21-predefined-types)
   - [2.2. Actions](#22-actions)
     - [2.2.1. started](#221-started)
-    - [2.2.2. progressed _progress_](#222-progressed-_progress_)
-    - [2.2.3. completed _ending_](#223-completed-_ending_)
+    - [2.2.2. progressed _progress_](#222-progressed-progress)
+    - [2.2.3. completed _ending_](#223-completed-ending)
   - [2.3. Requirements and considerations](#23-requirements-and-considerations)
   - [2.4. Metrics](#24-metrics)
 - [3. Reachable](#3-reachable)
@@ -23,8 +23,8 @@
 - [4. Variable](#4-variable)
   - [4.1. Predefined types](#41-predefined-types)
   - [4.2. Actions](#42-actions)
-    - [4.2.1. set _value_](#421-set-_value_)
-    - [4.2.2. increased/decreased _value_](#422-increaseddecreased-_value_)
+    - [4.2.1. set _value_](#421-set-value)
+    - [4.2.2. increased/decreased _value_](#422-increaseddecreased-value)
   - [4.3. Requirements and considerations](#43-requirements-and-considerations)
   - [4.4. Metrics](#44-metrics)
 - [5. Alternative](#5-alternative)
@@ -37,14 +37,14 @@
 - [6. Device](#6-device)
   - [6.1. Predefined types](#61-predefined-types)
   - [6.2. Actions](#62-actions)
-    - [6.2.1. pressed _button/key/position_](#621-pressed-_buttonkeyposition_)
-    - [6.2.2. released _button/key/position_](#622-released-_buttonkeyposition_)
+    - [6.2.1. pressed _button/key/position_](#621-pressed-buttonkeyposition)
+    - [6.2.2. released _button/key/position_](#622-released-buttonkeyposition)
   - [6.3. Requirements and considerations](#63-requirements-and-considerations)
   - [6.4. Metrics](#64-metrics)
 - [7. Target](#7-target)
   - [7.1. Predefined Types](#71-predefined-types)
   - [7.2. Actions](#72-actions)
-    - [7.2.1. touched _position_](#721-touched-_position_)
+    - [7.2.1. touched _position_](#721-touched-position)
     - [7.2.2. interacted](#722-interacted)
     - [7.2.3. killed](#723-killed)
     - [7.2.4. died because](#724-died-because)
@@ -563,7 +563,7 @@ Object | Action | Value | Value mandatory | Value Type | Value constraints |
 ---------|--------|-------|----------|------|------------|
 **Completable**| _started_ | No
  | _progressed to_ | Progress | Yes | Float | between `[0, 1]`
- - | _completed_ | Ending Identifier | No | String | - |
+ | _completed_ | Ending Identifier | No | String | - |
 **Accessible**| _accessed_ | No
  | _skipped_ | No
 **Variable** | _set_ | value | Yes | Boolean, Number, String |
