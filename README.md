@@ -142,15 +142,15 @@ A **completable** is something a player can start, progress and complete in a ga
 
 |Identifier|Definition|
 |----------|----------|
-|_Game_|Represents the game as a whole. A game is started the first time you play it, and is completed when you complete a basic story loop|
+|_Game_|Represents the game as a whole. A game is started the first time you play it, and is completed when you complete a basic story loop.|
 |_Session_|Represents a play session. Starts when the player connects to the game and ends with she disconnects.|
 |_Level_|Represents a level within a structure level in the game.|
-|_Quest_| ... |
+|_Quest_| Represents an accomplishable challenge or mission presented inside a game. |
 |_Stage_| ... |
 |_Combat_| ... |
 |_Story Node_| ... |
 |_Race_| ... |
-|_Completable_| A completable with no special semantics |
+|_Completable_| A completable with no special semantics.|
 
 ## 2.2. Actions
 
@@ -166,7 +166,7 @@ The player starts the completable.
 
 The player makes progress in a completable.
 
-* `value` is a mandatory float indicating the absolute progress in the completion. Its value should be between `[0, 1] `.
+* `value` is a mandatory float indicating the absolute progress in the completion. Its value must be between `[0, 1] `.
 
 ```
 	John Doe progressed 0.5 in "Levels/World 1-1" at "May 24, 2016 15:05:45 UTC"
@@ -174,7 +174,7 @@ The player makes progress in a completable.
 
 ### 2.2.3. completed _ending_
 
-The player finished a completable.
+The player finishes a completable.
 
 * `value` is an optional identifier indicating the ending of the completion, in the case a completable can be finished in several ways. Each identifier should represent and independent ending.
 
@@ -209,11 +209,11 @@ A **reachable** is a virtual space inside the game world a player can access or 
 
 |Identifier|Definition|
 |----------|----------|
-| _Screen_ | A screen in the game, e.g., the start menu, the options menu |
-| _Area_ | A general area within the game, that can contain several zones |
-| _Zone_ | A concrete zone within the game |
-| _Cutscene_ | A non-interactive cutscene in the game (e.g., a video)|
-| _Reachable_ | An accessible with no special semantics |
+| _Screen_ | A screen in the game, e.g., the start menu, the options menu. |
+| _Area_ | A general area within the game, that can contain several zones. |
+| _Zone_ | A concrete zone within the game. |
+| _Cutscene_ | A non-interactive cutscene in the game (e.g., a video). |
+| _Reachable_ | A reachable with no special semantics. |
 
 ## 3.2. Actions
 
@@ -253,13 +253,13 @@ A **variable** is a meaningful value inside the game world a player can set, inc
 
 |Identifier|Definition|
 |----------|----------|
-| _Score_ | Value indicating the level of success of the player in the game|
-| _Currency_ | E.g., coins |
-| _Health_ | ... |
-| _Attempt_ | E.g., remaining lives|
-| _Preference_ | E.g., music off |
-| _Position_ | x, y, z the position in the map |
-| _Variable_ | A variable with no special semantics |
+| _Score_ | Value indicating the level of success of the player in the game. |
+| _Currency_ | E.g., coins. |
+| _Health_ | Value indicating health of the player (e.g., number of hearts, energy bar). |
+| _Attempt_ | E.g., remaining lives. |
+| _Preference_ | E.g., music off. |
+| _Position_ | x, y, z the position in the map. |
+| _Variable_ | A variable with no special semantics. |
 
 ## 4.2. Actions
 
@@ -301,7 +301,7 @@ An **alternative** is a decision the player faces in the game, where she has to 
 |----------|----------|
 | _Question_ | A question with several options |
 | _Menu_ | An options menu |
-| _Dialog_ | ... |
+| _Dialog_ | An alternative presented during a conversation with an non-playable character. |
 | _Path_ | ... |
 | _Arena_ | E.g., the race in course in a race game, the stadium in a football game, a mini-game in Mario Party |
 | _Alternative_ | An alternative with no special semantics |
@@ -310,7 +310,7 @@ An **alternative** is a decision the player faces in the game, where she has to 
 
 ### 5.2.1. selected
 
-The player selected an option in an alternative.
+The player selects an option in an alternative.
 
 * `value` is the identifier of the selected option.
 
@@ -320,7 +320,7 @@ The player selected an option in an alternative.
 
 ### 5.2.2. unlocked
 
-The player unlocked an unavailable option in an alternative.
+The player unlocks an unavailable option in an alternative.
 
 * `value` is the identifier of the unlocked option.
 
@@ -340,17 +340,17 @@ A **device** is a piece of hardware the player interacts with to control the out
 
 |Identifier|Definition|
 |----------|----------|
-|_Mouse Button 1_| Main button in a mouse (usually left button) |
-|_Mouse Button 2_| Secondary button in a mouse (usually right button) |
-|_Keyboard_| A keyboard with keys |
-|_Controller_| A game pad with several buttons and pads |
-|_Touch Screen N_| A touch screen, usually in a mobile device. N is the finger index (for multi touch)|
+|_Mouse Button 1_| Main button in a mouse (usually left button). |
+|_Mouse Button 2_| Secondary button in a mouse (usually right button). |
+|_Keyboard_| A keyboard with keys. |
+|_Controller_| A game pad with several buttons and pads. |
+|_Touch Screen N_| A touch screen, usually in a mobile device. N is the finger index (for multi touch). |
 
 ## 6.2. Actions
 
 ### 6.2.1. pressed _button/key/position_
 
-The player pressed a button, a key or a position in a device.
+The player presses a button, a key or a position in a device.
 
 * `value` is the value of the button, key or position pressed by the player. If the value is a position, it should be in the game coordinates system, not in the screen coordinates system.
 
@@ -361,7 +361,7 @@ The player pressed a button, a key or a position in a device.
 
 ### 6.2.2. released _button/key/position_
 
-The player released a button, a key or a position in a device.
+The player releases a button, a key or a position in a device.
 
 * `value` of the button, key or position released by the player. If the value is a position, it should be in the game coordinates system, not in the screen coordinates system.
 
@@ -395,7 +395,7 @@ A **target** is a game element the player can interact with.
 
 ### 7.2.1. touched _position_
 
-The player touched (or clicked) a target inside the game world (e.g., an UI control).
+The player touches (or clicks) a target inside the game world (e.g., an UI control).
 
 * `value` is the optional position of the player touch/click. It should be in the game coordinates system.
 
@@ -404,7 +404,7 @@ The player touched (or clicked) a target inside the game world (e.g., an UI cont
 ```
 ### 7.2.2. interacted 
 
-The player interacted with a target inside the game world.
+The player interacts with a target inside the game world.
 
 ```
 	John Doe interacted "NPC/Villager" at "May 1, 2016 19:43:48 UTC"
@@ -412,7 +412,7 @@ The player interacted with a target inside the game world.
 
 ### 7.2.3. killed
 
-The player eliminated a target inside the game world.
+The player eliminates a target inside the game world.
 
 ```
 	John Doe killed "Enemy/Goomba" at "May 24, 2016 19:43:29 UTC"
@@ -420,7 +420,7 @@ The player eliminated a target inside the game world.
 
 ### 7.2.4. died because
 
-The player lost a life/attempt.
+The player loses a life/attempt.
 
 ```
 	John Doe died because "Enemy/Goomba" at "May 24, 2016 19:43:18 UTC"
@@ -428,7 +428,7 @@ The player lost a life/attempt.
 
 ### 7.2.5. collected
 
-The player collected a target inside the game world.
+The player collectes a target inside the game world.
 
 ```
 	John Doe collected "Weapon/LightSword" at "May 24, 2016 19:43:51 UTC"
@@ -436,7 +436,7 @@ The player collected a target inside the game world.
 
 ### 7.2.6. used
 
-The player used a a target inside the game world.
+The player uses a a target inside the game world.
 
 ```
 	John Doe used "Item/HealthPotion" at "May 24, 2016 19:43:31 UTC"
@@ -458,7 +458,7 @@ None.
 
 ### 8.2.1. performed
 
-The player executed the custom interaction.
+The player executes the custom interaction.
 
 ```
 	John Doe performed "Event/Jump"	
@@ -512,10 +512,10 @@ Used by the game engine to log debug and performance data.
 
 |Identifier|Definition|
 |----------|----------|
-|_Memory_| Memory usage. Value should be an absolute measure |
-|_CPU_| CPU usage. Value should be a percentage measure |
-|_Frame rate_| Frame rate of the game at a given moment |
-|_Load time_| Load time for a concrete task, in seconds |
+|_Memory_| Memory usage. Value should be an absolute measure. |
+|_CPU_| CPU usage. Value should be a percentage measure. |
+|_Frame rate_| Frame rate of the game at a given moment. |
+|_Load time_| Load time for a concrete task, in seconds. |
 
 ## 10.2. Actions
 
@@ -539,11 +539,11 @@ Used by the game engine to log some error in the game.
 
 |Identifier|Definition|
 |----------|----------|
-|_Info_| Relevent events with no meaningful consequences for the game|
-|_Debug_| A message with debug purposes |
-|_Warning_| An undesired happening in the game |
-|_Error_| Something that was not supposed to happen |
-|_Critical_| Something that should never happen, and it is critical for the correct functioning of the game|
+|_Info_| Relevent events with no meaningful consequences for the game.|
+|_Debug_| A message with debug purposes. |
+|_Warning_| An undesired happening in the game. |
+|_Error_| Something that was not supposed to happen. |
+|_Critical_| Something that should never happen, and it is critical for the correct functioning of the game.|
 
 ## 11.2. Actions
 
@@ -564,7 +564,7 @@ Object | Action | Value | Value mandatory | Value Type | Value constraints |
 **Completable**| _started_ | No
  | | _progressed to_ | Progress | Yes | Float | between `[0, 1]`
  | | _completed_ | Ending Identifier | No | String | - |
-**Accessible**| _accessed_ | No
+**Reachable**| _accessed_ | No
  | | _skipped_ | No
 **Variable** | _set_ | value | Yes | Boolean, Number, String |
  | | _increased_ | value | Yes | Number |
