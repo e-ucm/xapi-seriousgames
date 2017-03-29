@@ -108,7 +108,7 @@ The player navigates the game world during each gameplay. The game world can be 
 |Area                    | https://w3id.org/xapi/seriousgames/activity-types/area                    |
 |Zone                    | https://w3id.org/xapi/seriousgames/activity-types/zone                    |
 |Cutscene                | https://w3id.org/xapi/seriousgames/activity-types/cutscene                |
-|Screen					 | https://w3id.org/xapi/seriousgames/activity-types/screen                  |
+|Screen					         | https://w3id.org/xapi/seriousgames/activity-types/screen                  |
 
 The navigation through these parts is represented with the verbs:
 
@@ -237,7 +237,7 @@ The player interacts with different game elements that have effects in the game 
 |------------------------|---------------------------------------------------------------------------|
 |Enemy                   | https://w3id.org/xapi/seriousgames/activity-types/enemy                   |
 |Item                    | https://w3id.org/xapi/seriousgames/activity-types/item                    |
-|Non-Playable-Character  | https://w3id.org/xapi/seriousgames/activity-types/non-playable-character  |
+|Non-Player-Character    | https://w3id.org/xapi/seriousgames/activity-types/non-player-character    |
 
 The player can interact with these game objects through the following verbs:
 
@@ -289,6 +289,69 @@ The player used an object of his inventory.
   }
 }
 ```
+
+## Tracking device interactions
+
+The player interacts with different devices which affect the action in an activity. The profile defines the following game objects:
+
+| Activity Type          | Id                                                                        |
+|------------------------|---------------------------------------------------------------------------|
+|Mouse                   | https://w3id.org/xapi/seriousgames/activity-types/mouse                   |
+|Keyboard                | https://w3id.org/xapi/seriousgames/activity-types/keyboard                |
+|Controller              | https://w3id.org/xapi/seriousgames/activity-types/controller              |
+|Touchscreen             | https://w3id.org/xapi/seriousgames/activity-types/touchscreen             |
+
+The player can interact with these game objects through the following verbs:
+
+| Verb                   | Id                                                                        |
+|------------------------|---------------------------------------------------------------------------|
+|pressed                 | https://w3id.org/xapi/seriousgames/verbs/pressed                          |
+|released                | https://w3id.org/xapi/seriousgames/verbs/released                         |
+
+**pressed**
+
+The player has made contact with the game object.
+
+```json
+{
+  "actor": {
+    "name": "Jane Doe",
+    "mbox": "mailto:jane@example.com"
+  },
+  "verb": {
+    "id": "https://w3id.org/xapi/seriousgames/verbs/pressed",
+  },
+  "object": {
+    "id": "http://example.com/seriousgames/Geography/HelpButton",
+    "definition": {      
+      "type": "https://w3id.org/xapi/seriousgames/activity-types/controller"
+    }
+  }
+}
+```
+
+**released**
+
+The player released a previously pressed game object.
+
+```json
+{
+  "actor": {
+    "name": "Jane Doe",
+    "mbox": "mailto:jane@example.com"
+  },
+  "verb": {
+    "id": "https://w3id.org/xapi/seriousgames/verbs/released",
+  },
+  "object": {
+    "id": "http://example.com/seriousgames/Geography/HelpButton",
+    "definition": {      
+      "type": "https://w3id.org/xapi/seriousgames/activity-types/controller"
+    }
+  }
+}
+```
+
 ## Tracking game state variables
 
 The player has always an associated game state that represents his current state in the game. This game state contains a set of variables with different meanings.
