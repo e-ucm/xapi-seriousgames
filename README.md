@@ -53,7 +53,7 @@
   - [7.3. Requirements and considerations](#73-requirements-and-considerations)
   - [7.4. Metrics](#74-metrics)
 - [8. Event](#8-event)
-  - [8.1. Predefine types](#81-predefine-types)
+  - [8.1. Predefined types](#81-predefined-types)
   - [8.2. Actions](#82-actions)
     - [8.2.1. performed](#821-performed)
   - [8.3. Requirements and considerations](#83-requirements-and-considerations)
@@ -228,23 +228,24 @@ A **reachable** is a virtual space inside the game world a player can access or 
 
 ## 3.2. Actions
 
-** Actions included in the xAPI Profile**
+**Actions included in the xAPI Profile**
 
 ### 3.2.1. accessed
 
 The player entered in the reachable.
 
-``
+
+```
 	John Doe accessed "Screens/Sound Menu" at "Jan 10, 2016 7:47:47 UTC"
-``
+```
 
 ### 3.2.2 skipped
 
 The player skipped a reachable deliberately.
 
-``
+```	
 	John Doe skipped "Cutscenes/Intro video" at "Sep 3, 2016 9:17:37 UTC"
-``
+```
 
 ## 3.3. Requirements and considerations
 
@@ -282,7 +283,7 @@ A **variable** is a meaningful value inside the game world a player can set, inc
 
 ## 4.2. Actions
 
-** Actions under consideration **
+**Actions under consideration **
 
 ### 4.2.1. set _value_
 
@@ -504,7 +505,7 @@ The player collected a target inside the game world.
 
 This type of action is intended to cover those custom interactions not covered in the rest of the model.
 
-## 8.1. Predefine types
+## 8.1. Predefined types
 
 None.
 
@@ -544,9 +545,6 @@ The complex interaction began. All subsequent interactions will belong to the co
 
 Marks the end of tye complex interaction.
 
-## 9.3. Requirements and considerations
-
-Example:
 ```
 	// John Doe bought a health potion and recovered health
 	John Doe began "Buy health potion" at "May 24, 2016 19:43:11 UTC"
@@ -556,6 +554,8 @@ Example:
 	John Doe increased 5 "Health/HP" at "May 24, 2016 19:43:11 UTC"
 	John Doe ended "Buy health potion" at "May 24, 2016 19:43:11 UTC"
 ```
+
+## 9.3. Requirements and considerations
 
 * All the interactions are emitted at the same exact timestamp
 * A compound interaction can have sub-compound interaction
@@ -829,7 +829,7 @@ Measure label | https://rage.e-ucm.es/xapi/ext/label | String |
 **completed**
 
 ```
-John Doe completed with "Game Over" in "Super Mario Bros." at "Jan 20, 2016 12:35:13 UTC"
+	John Doe completed with "Game Over" in "Super Mario Bros." at "Jan 20, 2016 12:35:13 UTC"
 ```
 
 ```json
@@ -857,9 +857,9 @@ John Doe completed with "Game Over" in "Super Mario Bros." at "Jan 20, 2016 12:3
 
 **accessed**
 
-``
+```	
 	John Doe accessed "Screens/Sound Menu" at "Jan 10, 2016 7:47:47 UTC"
-``
+```
 
 ```json
 {
@@ -879,9 +879,9 @@ John Doe completed with "Game Over" in "Super Mario Bros." at "Jan 20, 2016 12:3
 
 **skipped**
 
-``
+```	
 	John Doe skipped "Cutscenes/Intro video" at "Sep 3, 2016 9:17:37 UTC"
-``
+```
 
 ```json
 {
