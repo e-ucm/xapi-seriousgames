@@ -8,7 +8,7 @@
 - [2. Completable](#2-completable)
   - [2.1. Predefined types](#21-predefined-types)
   - [2.2. Actions](#22-actions)
-    - [2.2.1. started](#221-started)
+    - [2.2.1. initialized](#221-initialized)
     - [2.2.2. progressed _progress_](#222-progressed-progress)
     - [2.2.3. completed _ending_](#223-completed-ending)
   - [2.3. Requirements and considerations](#23-requirements-and-considerations)
@@ -44,12 +44,12 @@
 - [7. Target](#7-target)
   - [7.1. Predefined Types](#71-predefined-types)
   - [7.2. Actions](#72-actions)
-    - [7.2.1. touched _position_](#721-touched-position)
-    - [7.2.2. interacted](#722-interacted)
-    - [7.2.3. killed](#723-killed)
-    - [7.2.4. died because](#724-died-because)
-    - [7.2.5. collected](#725-collected)
-    - [7.2.6. used](#726-used)
+    - [7.2.1. interacted](#721-interacted)
+    - [7.2.2. used](#722-used)
+    - [7.2.3. touched _position_](#723-touched-position)
+    - [7.2.4. killed](#724-killed)
+    - [7.2.5. died because](#725-died-because)
+    - [7.2.6. collected](#726-collected)
   - [7.3. Requirements and considerations](#73-requirements-and-considerations)
   - [7.4. Metrics](#74-metrics)
 - [8. Event](#8-event)
@@ -140,12 +140,19 @@ A **completable** is something a player can start, progress and complete in a ga
 
 ## 2.1. Predefined types
 
+**Types included in the xAPI Profile**
+
 |Identifier|Definition|
 |----------|----------|
-|_Game_|Represents the game as a whole. A game is started the first time you play it, and is completed when you complete a basic story loop.|
-|_Session_|Represents a play session. Starts when the player connects to the game and ends with she disconnects.|
+|_Serious-game_|Represents the game as a whole. A game is started the first time you play it, and is completed when you complete a basic story loop.|
 |_Level_|Represents a level within a structure level in the game.|
 |_Quest_| Represents an accomplishable challenge or mission presented inside a game. |
+
+**Types under consideration**
+
+|Identifier|Definition|
+|----------|----------|
+|_Session_|Represents a play session. Starts when the player connects to the game and ends with she disconnects.|
 |_Stage_| ... |
 |_Combat_| ... |
 |_Story Node_| ... |
@@ -154,17 +161,19 @@ A **completable** is something a player can start, progress and complete in a ga
 
 ## 2.2. Actions
 
-### 2.2.1. started
+**Actions included in the xAPI Profile**
 
-The player starts the completable.
+### 2.2.1. initialized
+
+The player initialized the completable.
 
 ```
-	John Doe started "Levels/World 1-1" at "May 24, 2016 15:03:17 UTC"
+	John Doe initialized "Levels/World 1-1" at "May 24, 2016 15:03:17 UTC"
 ```
 
 ### 2.2.2. progressed _progress_
 
-The player makes progress in a completable.
+The player made progress in a completable.
 
 * `value` is a mandatory float indicating the absolute progress in the completion. Its value must be between `[0, 1] `.
 
@@ -174,7 +183,7 @@ The player makes progress in a completable.
 
 ### 2.2.3. completed _ending_
 
-The player finishes a completable.
+The player finished a completable.
 
 * `value` is an optional identifier indicating the ending of the completion, in the case a completable can be finished in several ways. Each identifier should represent and independent ending.
 
@@ -207,6 +216,8 @@ A **reachable** is a virtual space inside the game world a player can access or 
 
 ## 3.1. Predefined types
 
+**Types included in the xAPI Profile**
+
 |Identifier|Definition|
 |----------|----------|
 | _Screen_ | A screen in the game, e.g., the start menu, the options menu. |
@@ -217,9 +228,11 @@ A **reachable** is a virtual space inside the game world a player can access or 
 
 ## 3.2. Actions
 
+** Actions included in the xAPI Profile**
+
 ### 3.2.1. accessed
 
-The player enters in the reachable.
+The player entered in the reachable.
 
 ``
 	John Doe accessed "Screens/Sound Menu" at "Jan 10, 2016 7:47:47 UTC"
@@ -227,7 +240,7 @@ The player enters in the reachable.
 
 ### 3.2.2 skipped
 
-The player skips a reachable deliberately.
+The player skipped a reachable deliberately.
 
 ``
 	John Doe skipped "Cutscenes/Intro video" at "Sep 3, 2016 9:17:37 UTC"
@@ -251,21 +264,29 @@ A **variable** is a meaningful value inside the game world a player can set, inc
 
 ## 4.1. Predefined types
 
+**Types included in the xAPI Profile**
+
+|Identifier|Definition|
+|----------|----------|
+| _Health_ | Value indicating health of the player (e.g., number of hearts, energy bar). |
+| _Position_ | x, y, z the position in the map. |
+
+**Types under consideration**
+
 |Identifier|Definition|
 |----------|----------|
 | _Score_ | Value indicating the level of success of the player in the game. |
 | _Currency_ | E.g., coins. |
-| _Health_ | Value indicating health of the player (e.g., number of hearts, energy bar). |
 | _Attempt_ | E.g., remaining lives. |
-| _Preference_ | E.g., music off. |
-| _Position_ | x, y, z the position in the map. |
 | _Variable_ | A variable with no special semantics. |
 
 ## 4.2. Actions
 
+** Actions under consideration **
+
 ### 4.2.1. set _value_
 
-The player sets a value in a variable.
+The player set a value in a variable.
 
 * `value` is a string, a boolean, a number or an object, with the current value for the variable.
 
@@ -276,7 +297,7 @@ The player sets a value in a variable.
 
 ### 4.2.2. increased/decreased _value_
 
-The player increases/decreases a value in a variable.
+The player increased/decreased a value in a variable.
 
 * `value` is a number with the increase/decrease for the variable.
 
@@ -297,20 +318,29 @@ An **alternative** is a decision the player faces in the game, where she has to 
 
 ## 5.1. Predefined types
 
+**Types included in the xAPI Profile**
+
 |Identifier|Definition|
 |----------|----------|
-| _Question_ | A question with several options |
-| _Menu_ | An options menu |
-| _Dialog_ | An alternative presented during a conversation with an non-playable character. |
+| _Question_ | A question with several options. |
+| _Menu_ | An options menu. |
+| _Dialog-tree_ | An alternative presented during a conversation with an non-playable character. |
+
+**Types under consideration**
+
+|Identifier|Definition|
+|----------|----------|
 | _Path_ | ... |
-| _Arena_ | E.g., the race in course in a race game, the stadium in a football game, a mini-game in Mario Party |
-| _Alternative_ | An alternative with no special semantics |
+| _Arena_ | E.g., the race in course in a race game, the stadium in a football game, a mini-game in Mario Party. |
+| _Alternative_ | An alternative with no special semantics. |
 
 ## 5.2. Actions
 
+**Actions included in the xAPI Profile**
+
 ### 5.2.1. selected
 
-The player selects an option in an alternative.
+The player selected an option in an alternative.
 
 * `value` is the identifier of the selected option.
 
@@ -320,7 +350,7 @@ The player selects an option in an alternative.
 
 ### 5.2.2. unlocked
 
-The player unlocks an unavailable option in an alternative.
+The player unlocked an unavailable option in an alternative.
 
 * `value` is the identifier of the unlocked option.
 
@@ -338,19 +368,30 @@ A **device** is a piece of hardware the player interacts with to control the out
 
 ## 6.1. Predefined types
 
+**Types included in the xAPI Profile**
+
+|Identifier|Definition|
+|----------|----------|
+|_Mouse_| A mouse device whose clicks and movement affects the action in an activity. |
+|_Keyboard_| A keyboard with keys. |
+|_Controller_| A game pad with several buttons and pads. |
+|_Touchscreen_| A touchscreen the player can press. |
+
+**Types under consideration**
+
 |Identifier|Definition|
 |----------|----------|
 |_Mouse Button 1_| Main button in a mouse (usually left button). |
 |_Mouse Button 2_| Secondary button in a mouse (usually right button). |
-|_Keyboard_| A keyboard with keys. |
-|_Controller_| A game pad with several buttons and pads. |
 |_Touch Screen N_| A touch screen, usually in a mobile device. N is the finger index (for multi touch). |
 
 ## 6.2. Actions
 
+**Actions included in the xAPI Profile**
+
 ### 6.2.1. pressed _button/key/position_
 
-The player presses a button, a key or a position in a device.
+The player pressed a button, a key or a position in a device.
 
 * `value` is the value of the button, key or position pressed by the player. If the value is a position, it should be in the game coordinates system, not in the screen coordinates system.
 
@@ -361,7 +402,7 @@ The player presses a button, a key or a position in a device.
 
 ### 6.2.2. released _button/key/position_
 
-The player releases a button, a key or a position in a device.
+The player released a button, a key or a position in a device.
 
 * `value` of the button, key or position released by the player. If the value is a position, it should be in the game coordinates system, not in the screen coordinates system.
 
@@ -382,64 +423,77 @@ A **target** is a game element the player can interact with.
 
 ## 7.1. Predefined Types
 
+**Types included in the xAPI Profile**
+
 |Identifier|Definition|
 |----------|----------|
-|_UI_| A control within the UI |
-|_Enemy_| An opponent inside the game |
-|_NPC_| Non-player character |
-|_Item_| A collectable |
+|_Enemy_| An opponent inside the game. |
+|_Non-player-character_| Non-player character. |
+|_Item_| A collectable. |
+
+**Types under consideration**
+
+|Identifier|Definition|
+|----------|----------|
+|_UI_| A control within the UI. |
 |_Weapon_| ... |
 |_Vehicle_| ... |
 
 ## 7.2. Actions
 
-### 7.2.1. touched _position_
+**Actions included in the xAPI Profile**
 
-The player touches (or clicks) a target inside the game world (e.g., an UI control).
+### 7.2.1. interacted 
+
+The player interacted with a target inside the game world.
+
+```
+	John Doe interacted "NPC/Villager" at "May 1, 2016 19:43:48 UTC"
+```
+
+### 7.2.2. used
+
+The player used a a target inside the game world.
+
+```
+	John Doe used "Item/HealthPotion" at "May 24, 2016 19:43:31 UTC"
+```
+
+**Actions under consideration**
+
+### 7.2.3. touched _position_
+
+The player touched (or clicked) a target inside the game world (e.g., an UI control).
 
 * `value` is the optional position of the player touch/click. It should be in the game coordinates system.
 
 ```
 	John Doe touched "UI/StartButton" at "May 15, 2016 19:43:31 UTC"
 ```
-### 7.2.2. interacted 
 
-The player interacts with a target inside the game world.
 
-```
-	John Doe interacted "NPC/Villager" at "May 1, 2016 19:43:48 UTC"
-```
+### 7.2.4. killed
 
-### 7.2.3. killed
-
-The player eliminates a target inside the game world.
+The player eliminated a target inside the game world.
 
 ```
 	John Doe killed "Enemy/Goomba" at "May 24, 2016 19:43:29 UTC"
 ```
 
-### 7.2.4. died because
+### 7.2.5. died because
 
-The player loses a life/attempt.
+The player lost a life/attempt.
 
 ```
 	John Doe died because "Enemy/Goomba" at "May 24, 2016 19:43:18 UTC"
 ```
 
-### 7.2.5. collected
+### 7.2.6. collected
 
-The player collectes a target inside the game world.
+The player collected a target inside the game world.
 
 ```
 	John Doe collected "Weapon/LightSword" at "May 24, 2016 19:43:51 UTC"
-```
-
-### 7.2.6. used
-
-The player uses a a target inside the game world.
-
-```
-	John Doe used "Item/HealthPotion" at "May 24, 2016 19:43:31 UTC"
 ```
 
 ## 7.3. Requirements and considerations
@@ -456,9 +510,11 @@ None.
 
 ## 8.2. Actions
 
+**Actions under consideration**
+
 ### 8.2.1. performed
 
-The player executes the custom interaction.
+The player executed the custom interaction.
 
 ```
 	John Doe performed "Event/Jump"	
@@ -477,6 +533,8 @@ To express a complex interaction, formed by simple interactions.
 None.
 
 ## 9.2. Actions
+
+**Actions under consideration**
 
 ### 9.2.1 began
 
@@ -510,6 +568,8 @@ Used by the game engine to log debug and performance data.
 
 ## 10.1. Predefined types
 
+**Types under consideration**
+
 |Identifier|Definition|
 |----------|----------|
 |_Memory_| Memory usage. Value should be an absolute measure. |
@@ -518,6 +578,8 @@ Used by the game engine to log debug and performance data.
 |_Load time_| Load time for a concrete task, in seconds. |
 
 ## 10.2. Actions
+
+**Actions under consideration**
 
 ### 10.2.1. measured
 
@@ -537,6 +599,8 @@ Used by the game engine to log some error in the game.
 
 ## 11.1. Predefined types
 
+**Types under consideration**
+
 |Identifier|Definition|
 |----------|----------|
 |_Info_| Relevent events with no meaningful consequences for the game.|
@@ -546,6 +610,8 @@ Used by the game engine to log some error in the game.
 |_Critical_| Something that should never happen, and it is critical for the correct functioning of the game.|
 
 ## 11.2. Actions
+
+**Actions under consideration**
 
 ### 11.2.1 threw
 
@@ -559,26 +625,33 @@ Used by the game engine to log some error in the game.
 
 # 12. Summary
 
+**Actions included in the xAPI profile**
+
 Object | Action | Value | Value mandatory | Value Type | Value constraints |
 ---------|--------|-------|----------|------|------------|
-**Completable**| _started_ | No
- | | _progressed to_ | Progress | Yes | Float | between `[0, 1]`
+**Completable**| _initialized_ | No
+ | | _progressed_ | Progress | Yes | Float | between `[0, 1]`
  | | _completed_ | Ending Identifier | No | String | - |
 **Reachable**| _accessed_ | No
  | | _skipped_ | No
-**Variable** | _set_ | value | Yes | Boolean, Number, String |
- | | _increased_ | value | Yes | Number |
- | | _decreased_ | value | Yes | Number |
 **Alternative** | _selected_ | Option Id. | Yes | String |
  | | _unlocked_ | Option Id. | Yes | String | 
 **Device** | _pressed_ | Press value (button, key, position) | Yes | Integer, Position | Position must be in world coordinates |
  | | _released_ | Press value (button, key, position) | Yes | String, Position | Position must be in world coordinates |
+**Target** | _interacted_ | No
+ | | _used_ | No
+
+**Actions under consideration**
+
+Object | Action | Value | Value mandatory | Value Type | Value constraints |
+---------|--------|-------|----------|------|------------|
+**Variable** | _set_ | value | Yes | Boolean, Number, String |
+ | | _increased_ | value | Yes | Number |
+ | | _decreased_ | value | Yes | Number |
 **Target** | _touched_ (clicked) | Touch position | No | Position | Position must be in world coordinates |
- | | _interacted_ | No
  | | _killed_ | No
  | | _died because_ | No
  | | _collected_ | No
- | | _used_ | No
 **Event** | _performed_ | Custom value
 **Compound interaction**| _began_ | Compound interaction Id. | Yes | String 
  | | _ended_ | No
@@ -589,44 +662,52 @@ Object | Action | Value | Value mandatory | Value Type | Value constraints |
 
 ## 13.1. Objects
 
+**Objects included in the xAPI Profile**
+
 Identifier | IRI|
 -------|----|
-Game | http://activitystrea.ms/schema/1.0/game |
+Serious-game | https://w3id.org/xapi/seriousgames/activity-types/serious-game |
+Level | https://w3id.org/xapi/seriousgames/activity-types/level |
+Quest | https://w3id.org/xapi/seriousgames/activity-types/quest |
+Screen | https://w3id.org/xapi/seriousgames/activity-types/screen |
+Area | https://w3id.org/xapi/seriousgames/activity-types/area |
+Zone | https://w3id.org/xapi/seriousgames/activity-types/zone |
+Cutscene | https://w3id.org/xapi/seriousgames/activity-types/cutscene |
+Health | https://w3id.org/xapi/seriousgames/extensions/health |
+Position | https://w3id.org/xapi/seriousgames/extensions/position |
+Question | http://adlnet.gov/expapi/activities/question |
+Menu | https://w3id.org/xapi/seriousgames/activity-types/menu |
+Dialog-tree | https://w3id.org/xapi/seriousgames/activity-types/dialog-tree |
+Mouse | https://w3id.org/xapi/seriousgames/activity-types/mouse |
+Keyboard | https://w3id.org/xapi/seriousgames/activity-types/keyboard |
+Controller | https://w3id.org/xapi/seriousgames/activity-types/controller |
+Touchscreen | https://w3id.org/xapi/seriousgames/activity-types/touchscreen |
+Enemy | https://w3id.org/xapi/seriousgames/activity-types/enemy |
+Non-player-character | https://w3id.org/xapi/seriousgames/activity-types/non-player-character |
+Item | https://w3id.org/xapi/seriousgames/activity-types/item |
+
+**Objects under consideration**
+
+Identifier | IRI|
+-------|----|
 Session | https://rage.e-ucm.es/xapi/seriousgames/activities/Session |
-Level | http://curatr3.com/define/type/level |
-Quest | https://rage.e-ucm.es/xapi/seriousgames/activities/Quest |
 Stage | https://rage.e-ucm.es/xapi/seriousgames/activities/Stage |
 Combat | https://rage.e-ucm.es/xapi/seriousgames/activities/Combat |
 Story Node | https://rage.e-ucm.es/xapi/seriousgames/activities/StoryNode |
 Race | https://rage.e-ucm.es/xapi/seriousgames/activities/Race |
 Completable | https://rage.e-ucm.es/xapi/seriousgames/activities/Completable |
-Screen | https://rage.e-ucm.es/xapi/seriousgames/activities/Screen |
-Area | https://rage.e-ucm.es/xapi/seriousgames/activities/Area |
-Zone | https://rage.e-ucm.es/xapi/seriousgames/activities/Zone |
-Cutscene | https://rage.e-ucm.es/xapi/seriousgames/activities/Cutscene |
 Reachable | https://rage.e-ucm.es/xapi/seriousgames/activities/Reachable |
 Score | https://rage.e-ucm.es/xapi/seriousgames/activities/Score |
 Currency | https://rage.e-ucm.es/xapi/seriousgames/activities/Currency |
-Health | https://rage.e-ucm.es/xapi/seriousgames/activities/Health |
 Attempt | https://rage.e-ucm.es/xapi/seriousgames/activities/Attempt |
-Preference | https://rage.e-ucm.es/xapi/seriousgames/activities/Preference |
-Position | https://rage.e-ucm.es/xapi/seriousgames/activities/Position |
 Variable | https://rage.e-ucm.es/xapi/seriousgames/activities/Variable |
-Question | http://adlnet.gov/expapi/activities/question |
-Menu | https://rage.e-ucm.es/xapi/seriousgames/activities/Menu |
-Dialog | https://rage.e-ucm.es/xapi/seriousgames/activities/Dialog |
 Path | https://rage.e-ucm.es/xapi/seriousgames/activities/Path |
 Arena | https://rage.e-ucm.es/xapi/seriousgames/activities/Arena |
 Alternative | https://rage.e-ucm.es/xapi/seriousgames/activities/Alternative |
 Mouse Button 1 | https://rage.e-ucm.es/xapi/seriousgames/activities/MouseButton1 |
 Mouse Button 2 | https://rage.e-ucm.es/xapi/seriousgames/activities/MouseButton2 |
-Keyboard | https://rage.e-ucm.es/xapi/seriousgames/activities/Keyboard |
-Controller | https://rage.e-ucm.es/xapi/seriousgames/activities/Controller |
 Touch Screen N | https://rage.e-ucm.es/xapi/seriousgames/activities/TouchScreenN |
 UI | https://rage.e-ucm.es/xapi/seriousgames/activities/UI |
-Enemy | https://rage.e-ucm.es/xapi/seriousgames/activities/Enemy |
-NPC | https://rage.e-ucm.es/xapi/seriousgames/activities/NPC |
-Item | https://rage.e-ucm.es/xapi/seriousgames/activities/Item |
 Weapon | https://rage.e-ucm.es/xapi/seriousgames/activities/Weapon |
 Vehicle | https://rage.e-ucm.es/xapi/seriousgames/activities/Vehicle |
 Memory | https://rage.e-ucm.es/xapi/seriousgames/activities/Memory |
@@ -641,26 +722,33 @@ Critical | https://rage.e-ucm.es/xapi/seriousgames/activities/Critical |
 
 ## 13.2. Verbs
 
+**Verbs included in the xAPI Profile**
+
 Identifier | IRI|
 -------|----|
-started | http://activitystrea.ms/schema/1.0/start |
+initialized | http://adlnet.gov/expapi/verbs/initialized |
 progressed | http://adlnet.gov/expapi/verbs/progressed |
 completed | http://adlnet.gov/expapi/verbs/completed |
-accessed | http://activitystrea.ms/schema/1.0/access |
+accessed | https://w3id.org/xapi/seriousgames/verbs/accessed |
 skipped | http://id.tincanapi.com/verb/skipped |
+selected | https://w3id.org/xapi/adb/verbs/selected |
+unlocked | https://w3id.org/xapi/seriousgames/verbs/unlocked |
+pressed | https://w3id.org/xapi/seriousgames/verbs/pressed |
+released | https://w3id.org/xapi/seriousgames/verbs/released |
+interacted | http://adlnet.gov/expapi/verbs/interacted |
+used | https://w3id.org/xapi/seriousgames/verbs/used |
+
+**Verbs under consideration**
+
+Identifier | IRI|
+-------|----|
 set | https://rage.e-ucm.es/xapi/seriousgames/verbs/set |
 increased | https://rage.e-ucm.es/xapi/seriousgames/verbs/increased |
 decreased | https://rage.e-ucm.es/xapi/seriousgames/verbs/decreased |
-selected | http://adlnet.gov/expapi/verbs/preferred |
-unlocked | https://rage.e-ucm.es/xapi/seriousgames/verbs/unlocked |
-pressed | http://future-learning.info/xAPI/verb/pressed |
-released | http://future-learning.info/xAPI/verb/released |
 touched | http://future-learning.info/xAPI/verb/pressed |
-interacted | http://activitystrea.ms/schema/1.0/interact |
 killed | https://rage.e-ucm.es/xapi/seriousgames/verbs/killed |
 died because | https://rage.e-ucm.es/xapi/seriousgames/verbs/died |
 collected | https://rage.e-ucm.es/xapi/seriousgames/verbs/collected |
-used | http://activitystrea.ms/schema/1.0/use |
 performed | https://rage.e-ucm.es/xapi/seriousgames/verbs/performed |
 began | https://rage.e-ucm.es/xapi/seriousgames/verbs/began |
 ended | https://rage.e-ucm.es/xapi/seriousgames/verbs/ended |
@@ -669,10 +757,19 @@ threw | https://rage.e-ucm.es/xapi/seriousgames/verbs/threw |
 
 ## 13.3 Values
 
+**Values included in the xAPI Profile**
+
 Parameter | Extension IRI | Value |
 ----------|---------------|-------|
-Progress | https://rage.e-ucm.es/xapi/ext/progress | Number between [0, 1]|
-Variable value / Position / Device button | https://rage.e-ucm.es/xapi/ext/value | Number, String, Boolean, Object |
+Health | https://w3id.org/xapi/seriousgames/extensions/health | Number between [0, 1]|
+Position | https://w3id.org/xapi/seriousgames/extensions/position | Object with attributes x, y and z |
+Progress | https://w3id.org/xapi/seriousgames/extensions/progress | Number between [0, 1]|
+
+**Values under consideration**
+
+Parameter | Extension IRI | Value |
+----------|---------------|-------|
+Variable value / Device button | https://rage.e-ucm.es/xapi/ext/value | Number, String, Boolean, Object |
 Variable increase/decrease | https://rage.e-ucm.es/xapi/ext/value | Number |
 Measure label | https://rage.e-ucm.es/xapi/ext/label | String |
 
@@ -680,17 +777,17 @@ Measure label | https://rage.e-ucm.es/xapi/ext/label | String |
 
 ### 13.4.1 Completable
 
-**started**
+**initialized**
 
 ```
-	John Doe started "Levels/World 1-1" at "May 24, 2016 15:03:47 UTC"
+	John Doe initialized "Levels/World 1-1" at "May 24, 2016 15:03:47 UTC"
 ```
 
 ```json
 {
 	"actor": { "..." },
 	"verb": {
-		"id": "http://activitystrea.ms/schema/1.0/start"
+		"id": "http://adlnet.gov/expapi/verbs/initialized"
 	},
 	"object": {
 		"id": "http://example.com/games/SuperMarioBros/Levels/World1-1",
