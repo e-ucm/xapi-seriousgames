@@ -283,7 +283,7 @@ A **variable** is a meaningful value inside the game world a player can set, inc
 
 ## 4.2. Actions
 
-**Actions under consideration **
+**Actions under consideration**
 
 ### 4.2.1. set _value_
 
