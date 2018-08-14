@@ -349,6 +349,22 @@
       }
     },
     {
+      "@id": "https://w3id.org/xapi/seriousgames/verbs/purchased",
+      "@type": "Verb",
+      "definition": {
+        "en": "Indicates that the actor has made a real or virtual purchase within the application."
+      },
+      "prefLabel": {
+        "en": "purchased"
+      },
+      "scopeNote": {
+        "en": "Used when the player make an in-app purchase with real or virtual currencies."
+      },
+      "closelyRelatedNaturalLanguageTerm": {
+        "@id": "http://http://wordnet-rdf.princeton.edu/id/02211988-v"
+      }
+    },
+    {
       "@id": "https://w3id.org/xapi/seriousgames/verbs/released",
       "@type": "Verb",
       "closeMatch": {
